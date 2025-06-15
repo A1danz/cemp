@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.android.library)
@@ -27,8 +29,9 @@ kotlin {
             implementation(libs.kermit)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.client.serialization)
             implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.client.auth)
+            implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.multiplatformSettings)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
@@ -69,6 +72,7 @@ kotlin {
 
 }
 
+
 android {
     namespace = "com.cemp"
     compileSdk = 35
@@ -78,9 +82,18 @@ android {
     }
 }
 
+val secrets = Properties().apply {
+    val secretsFile = rootProject.file("secrets.properties")
+    if (secretsFile.exists().not()) error(
+        "Missing secrets.properties file, please copy secrets_prod.properties to secrets.properties and add your secrets."
+    )
+
+    load(secretsFile.inputStream())
+}
+
 buildConfig {
-    // BuildConfig configuration here.
-    // https://github.com/gmazzo/gradle-buildconfig-plugin#usage-in-kts
+    buildConfigField("API_TOKEN", secrets["API_TOKEN"] as String)
+    buildConfigField("BASE_URL", secrets["BASE_URL"] as String)
 }
 
 sqldelight {
