@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS user (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    username TEXT NOT NULL,
+    email TEXT NOT NULL,
+    password_hash TEXT NOT NULL
+);
+
+findByEmailAndPassword:
+SELECT *
+FROM user
+WHERE email = ? AND password_hash = ?;
+
+findByEmail:
+SELECT *
+FROM user
+WHERE email = ?;
+
+findByEmailOrUsername:
+SELECT *
+FROM user
+WHERE email = ? OR username = ?;
+
+findById:
+SELECT *
+FROM user
+WHERE id = ?;
+
+insertUser:
+INSERT INTO user (name, username, email, password_hash)
+VALUES (?, ?, ?, ?);
+
+lastInsertedId:
+SELECT last_insert_rowid();
+
