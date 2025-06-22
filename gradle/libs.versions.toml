@@ -14,6 +14,8 @@ koin = "4.0.1"
 kstore = "0.9.1"
 compose = "1.7.3"
 androidx-activityCompose = "1.9.3"
+firebase-bom = "33.6.0"
+firebase-gitlive = "2.1.0"
 
 [libraries]
 
@@ -45,6 +47,11 @@ koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
 kstore = { module = "io.github.xxfast:kstore", version.ref = "kstore" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 
+# Firebase
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-gitlive-analytics = { module = "dev.gitlive:firebase-analytics", version.ref = "firebase-gitlive" }
+
 [plugins]
 
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -55,3 +62,4 @@ buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
+google-services = { id = "com.google.gms.google-services", version = "4.4.2" }

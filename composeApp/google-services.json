@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "961127164838",
+    "project_id": "cemp-5e85d",
+    "storage_bucket": "cemp-5e85d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961127164838:android:7b231d3bdad6cc2122bd67",
+        "android_client_info": {
+          "package_name": "sample.app.androidApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqE8GSMb_sShxngZh7tHinWQ3rajUlL-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

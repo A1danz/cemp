@@ -37,6 +37,9 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.kstore)
+            
+            // Firebase Analytics (multiplatform)
+            implementation(libs.firebase.gitlive.analytics)
         }
 
         commonTest.dependencies {
@@ -47,6 +50,10 @@ kotlin {
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqlDelight.driver.android)
+            
+            // Firebase Android
+            implementation(platform(libs.firebase.bom))
+            implementation(libs.firebase.analytics)
         }
 
         jvmMain.dependencies {

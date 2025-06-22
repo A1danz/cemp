@@ -22,5 +22,6 @@ val dataModule = module {
         networkModule,
         databaseModule,
         settingsModule,
+        analyticsModule,
     )
 }

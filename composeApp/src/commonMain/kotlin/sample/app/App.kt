@@ -5,13 +5,24 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.cemp.getFibonacciNumbers
+import com.cemp.analytics.Analytics
 
 @Composable
 fun App() {
+    // Отправляем событие при запуске приложения
+    LaunchedEffect(Unit) {
+        Analytics.logScreenView("main_screen", "App")
+        Analytics.logEvent("app_started", mapOf(
+            "platform" to "multiplatform",
+            "version" to "1.0.0"
+        ))
+    }
+    
     Box(
         modifier = Modifier.fillMaxSize().background(Color.White),
         contentAlignment = Alignment.Center
