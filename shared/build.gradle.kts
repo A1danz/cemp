@@ -33,6 +33,7 @@ kotlin {
             implementation(libs.ktor.client.auth)
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.multiplatformSettings)
+            implementation(libs.multiplatformSettingsCoroutines)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.kstore)
@@ -69,8 +70,16 @@ kotlin {
             }
         }
     }
-
 }
+
+sqldelight {
+    databases {
+        create("CempDatabase") {
+            packageName.set("com.cemp.shared.data.database")
+        }
+    }
+}
+
 
 
 android {
@@ -94,14 +103,4 @@ val secrets = Properties().apply {
 buildConfig {
     buildConfigField("API_TOKEN", secrets["API_TOKEN"] as String)
     buildConfigField("BASE_URL", secrets["BASE_URL"] as String)
-}
-
-sqldelight {
-    databases {
-        create("MyDatabase") {
-            // Database configuration here.
-            // https://cashapp.github.io/sqldelight
-            packageName.set("com.cemp.db")
-        }
-    }
 }
