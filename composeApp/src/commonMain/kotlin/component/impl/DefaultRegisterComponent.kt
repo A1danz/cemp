@@ -4,6 +4,7 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
+import com.cemp.common.ext.logErr
 import com.cemp.feature.auth.domain.model.error.RegistrationError
 import com.cemp.feature.auth.domain.model.result.RegistrationResult
 import com.cemp.feature.auth.domain.usecase.RegistrationUseCase
@@ -95,6 +96,8 @@ class DefaultRegisterComponent(
                     RegistrationResult.Success -> onRegisterSuccess()
                 }
             }.onFailure {
+                logErr("Error during login", it)
+
                 state.value =
                     state.value.copy(isLoading = false, globalError = "Неизвестная ошибка")
             }

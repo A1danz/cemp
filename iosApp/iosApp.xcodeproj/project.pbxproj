@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DDCA8FD02E09E11900438965 /* iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A953A29CC810C00F8E227 /* iosApp.swift */; };
-		DDCA8FD22E09E2FC00438965 /* RootHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD12E09E2FC00438965 /* RootHolder.swift */; };
-		DDCA8FD72E09E7C700438965 /* MutableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD62E09E7C400438965 /* MutableValue.swift */; };
-		DDCA8FD92E09E7DD00438965 /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD82E09E7DD00438965 /* ObservableValue.swift */; };
-		DDCA8FDB2E09E7FA00438965 /* RootView 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */; };
-		DDCA8FDD2E09E81100438965 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDC2E09E81100438965 /* AuthView.swift */; };
-		DDCA8FDF2E0C298500438965 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDE2E0C298300438965 /* LoginView.swift */; };
-		DDCA8FE32E0C29B900438965 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE22E0C29B600438965 /* RegisterView.swift */; };
-		DDCA8FE52E0C2A4200438965 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */; };
+		DDCA8FE92E0C3F8C00438965 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */; };
+		DDCA8FEA2E0C3F8C00438965 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE22E0C29B600438965 /* RegisterView.swift */; };
+		DDCA8FEB2E0C3F8C00438965 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDE2E0C298300438965 /* LoginView.swift */; };
+		DDCA8FEC2E0C3F8C00438965 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDC2E09E81100438965 /* AuthView.swift */; };
+		DDCA8FED2E0C3F8C00438965 /* RootView 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */; };
+		DDCA8FEE2E0C3F8C00438965 /* StateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE62E0C31E700438965 /* StateValue.swift */; };
+		DDCA8FEF2E0C3F8C00438965 /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD82E09E7DD00438965 /* ObservableValue.swift */; };
+		DDCA8FF02E0C3F8C00438965 /* MutableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD62E09E7C400438965 /* MutableValue.swift */; };
+		DDCA8FF12E0C3F8C00438965 /* RootHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD12E09E2FC00438965 /* RootHolder.swift */; };
+		DDCA8FF22E0C3F8C00438965 /* iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A953A29CC810C00F8E227 /* iosApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		DDCA8FDE2E0C298300438965 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DDCA8FE22E0C29B600438965 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		DDCA8FE62E0C31E700438965 /* StateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		DDCA8FD52E09E7A600438965 /* DecomposeHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				DDCA8FE62E0C31E700438965 /* StateValue.swift */,
 				DDCA8FD82E09E7DD00438965 /* ObservableValue.swift */,
 				DDCA8FD62E09E7C400438965 /* MutableValue.swift */,
 			);
@@ -159,7 +162,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :composeApp:assembleDebugAppleFrameworkForXcode\necho \"Cleaning extended attributes from all build artifacts...\"\nfind \"$BUILD_DIR\" -name \"ComposeApp.framework\" -exec xattr -cr {} \\;\nfind \"$BUILD_DIR\" -name \"*.dylib\" -exec xattr -cr {} \\;\nfind \"$BUILD_DIR\" -name \"*.a\" -exec xattr -cr {} \\;\nfind \"$BUILD_DIR\" -name \"*.app\" -exec xattr -cr {} \\;\nfind \"$BUILD_DIR\" -type f -exec xattr -c {} \\; 2>/dev/null || true\necho \"Cleaned extended attributes from all build artifacts\"\n";
+			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :composeApp:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -168,15 +171,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDCA8FDB2E09E7FA00438965 /* RootView 2.swift in Sources */,
-				DDCA8FDF2E0C298500438965 /* LoginView.swift in Sources */,
-				DDCA8FD02E09E11900438965 /* iosApp.swift in Sources */,
-				DDCA8FDD2E09E81100438965 /* AuthView.swift in Sources */,
-				DDCA8FE52E0C2A4200438965 /* WelcomeView.swift in Sources */,
-				DDCA8FD72E09E7C700438965 /* MutableValue.swift in Sources */,
-				DDCA8FE32E0C29B900438965 /* RegisterView.swift in Sources */,
-				DDCA8FD92E09E7DD00438965 /* ObservableValue.swift in Sources */,
-				DDCA8FD22E09E2FC00438965 /* RootHolder.swift in Sources */,
+				DDCA8FE92E0C3F8C00438965 /* WelcomeView.swift in Sources */,
+				DDCA8FEA2E0C3F8C00438965 /* RegisterView.swift in Sources */,
+				DDCA8FEB2E0C3F8C00438965 /* LoginView.swift in Sources */,
+				DDCA8FEC2E0C3F8C00438965 /* AuthView.swift in Sources */,
+				DDCA8FED2E0C3F8C00438965 /* RootView 2.swift in Sources */,
+				DDCA8FEE2E0C3F8C00438965 /* StateValue.swift in Sources */,
+				DDCA8FEF2E0C3F8C00438965 /* ObservableValue.swift in Sources */,
+				DDCA8FF02E0C3F8C00438965 /* MutableValue.swift in Sources */,
+				DDCA8FF12E0C3F8C00438965 /* RootHolder.swift in Sources */,
+				DDCA8FF22E0C3F8C00438965 /* iosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +241,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lsqlite3";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -290,6 +295,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-lsqlite3";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -300,10 +306,8 @@
 		A93A954629CC810D00F8E227 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -313,6 +317,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = sample.app.iosApp;
 				PRODUCT_NAME = "Multiplatform App";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -324,10 +332,8 @@
 		A93A954729CC810D00F8E227 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -337,6 +343,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = sample.app.iosApp;
 				PRODUCT_NAME = "Multiplatform App";
 				SWIFT_EMIT_LOC_STRINGS = YES;

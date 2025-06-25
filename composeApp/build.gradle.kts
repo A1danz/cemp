@@ -1,6 +1,5 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-import org.jetbrains.kotlin.konan.target.Family
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -30,14 +29,19 @@ kotlin {
             }
         }
 
+    targets.withType<KotlinNativeTarget>().configureEach {
+        binaries.all {
+            linkerOpts("-lsqlite3")
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.ui)
             implementation(compose.material)
-            implementation(compose.uiTooling)
-            implementation(project(":shared"))
+            api(project(":shared"))
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.essenty.coroutines)
@@ -47,8 +51,10 @@ kotlin {
         }
 
         androidMain.dependencies {
+            implementation(compose.uiTooling)
             implementation(libs.androidx.activityCompose)
             implementation(libs.decompose.ext)
+            implementation(libs.koin.android)
         }
 
         jvmMain.dependencies {

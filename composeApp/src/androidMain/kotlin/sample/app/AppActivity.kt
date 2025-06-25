@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.arkivanov.decompose.defaultComponentContext
 import component.impl.DefaultRootComponent
+import org.koin.core.context.startKoin
 import screens.RootScreen
 
 class AppActivity : ComponentActivity() {

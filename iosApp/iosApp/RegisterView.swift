@@ -15,6 +15,12 @@ struct RegisterView: View {
     var body: some View {
         ZStack {
             Text("Register screen")
+//            component.onIntent(intent_: RegisterComponentIntentNameChanged(value: "Name"))
+//            component.onIntent(intent_: RegisterComponentIntentEmailChanged(value: "Email"))
+//            component.onIntent(intent_: RegisterComponentIntentUsernameChanged(value: "Username"))
+//            component.onIntent(intent_: RegisterComponentIntentPasswordChanged(value: "Password"))
+//            component.onIntent(intent_: RegisterComponentIntentConfirmPasswordChanged(value: "Confirm Password"))
+//            component.onIntent(intent_: RegisterComponentIntentRegisterClicked())
         }
     }
 }

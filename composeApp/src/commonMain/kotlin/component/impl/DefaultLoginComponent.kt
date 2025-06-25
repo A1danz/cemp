@@ -4,6 +4,7 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
+import com.cemp.common.ext.logErr
 import com.cemp.feature.auth.domain.model.error.LoginError
 import com.cemp.feature.auth.domain.model.result.LoginResult
 import com.cemp.feature.auth.domain.usecase.LoginUseCase
@@ -61,6 +62,8 @@ class DefaultLoginComponent(
                 }
                 onLoginSuccess()
             }.onFailure {
+                logErr("Error during login", it)
+
                 state.value = state.value.copy(
                     isLoading = false,
                     globalError = "Произошла незивестная ошибка"

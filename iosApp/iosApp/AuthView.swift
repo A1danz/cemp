@@ -9,8 +9,6 @@ import SwiftUI
 import ComposeApp
 import Foundation
 
-
-// AuthView - пример, адаптируй под свой AuthComponent
 struct AuthView: View {
     let component: AuthComponent
     @ObservedObject var stack: ObservableValue<ChildStack<AnyObject, AuthComponentChild>>
