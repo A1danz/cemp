@@ -36,9 +36,12 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.ui)
             implementation(compose.material)
+            implementation(compose.uiTooling)
             implementation(project(":shared"))
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.essenty.coroutines)
+            implementation(libs.koin.core)
             api(libs.essenty)
             api(libs.decompose)
         }

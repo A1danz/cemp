@@ -8,6 +8,11 @@ class DefaultWelcomeComponent(
     private val onLoginClick: () -> Unit,
     private val onRegisterClick: () -> Unit,
 ) : WelcomeComponent, ComponentContext by componentContext {
-    override fun onLoginClick() = onLoginClick.invoke()
-    override fun onRegisterClick() = onRegisterClick.invoke()
+
+    override fun onIntent(intent: WelcomeComponent.Intent) {
+        when(intent) {
+            WelcomeComponent.Intent.LoginClicked -> onLoginClick()
+            WelcomeComponent.Intent.RegisterClicked -> onRegisterClick()
+        }
+    }
 }

@@ -10,8 +10,6 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import component.AuthComponent
 
-//import com.cemp.feature.auth.presentation.component.AuthComponent
-
 @Composable
 fun AuthScreen(
     component: AuthComponent,

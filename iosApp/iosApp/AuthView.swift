@@ -13,9 +13,25 @@ import Foundation
 // AuthView - пример, адаптируй под свой AuthComponent
 struct AuthView: View {
     let component: AuthComponent
+    @ObservedObject var stack: ObservableValue<ChildStack<AnyObject, AuthComponentChild>>
+    
+    init(component: AuthComponent) {
+        self.component = component
+        self.stack = ObservableValue(component.childStack)
+    }
 
     var body: some View {
-        Text("Auth screen here")
-        // Здесь можно реализовать UI и связывать с component
+        ZStack {
+            switch stack.value.active.instance {
+            case let welcome as AuthComponentChildWelcome:
+                WelcomeView(component: welcome.component)
+            case let login as AuthComponentChildLogin:
+                LoginView(component: login.component)
+            case let registration as AuthComponentChildRegister:
+                RegisterView(component: registration.component)
+            default:
+                Text("Unknown screen")
+            }
+        }
     }
 }

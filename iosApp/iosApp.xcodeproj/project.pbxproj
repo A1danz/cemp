@@ -13,6 +13,9 @@
 		DDCA8FD92E09E7DD00438965 /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD82E09E7DD00438965 /* ObservableValue.swift */; };
 		DDCA8FDB2E09E7FA00438965 /* RootView 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */; };
 		DDCA8FDD2E09E81100438965 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDC2E09E81100438965 /* AuthView.swift */; };
+		DDCA8FDF2E0C298500438965 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDE2E0C298300438965 /* LoginView.swift */; };
+		DDCA8FE32E0C29B900438965 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE22E0C29B600438965 /* RegisterView.swift */; };
+		DDCA8FE52E0C2A4200438965 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		DDCA8FD82E09E7DD00438965 /* ObservableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
 		DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootView 2.swift"; sourceTree = "<group>"; };
 		DDCA8FDC2E09E81100438965 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		DDCA8FDE2E0C298300438965 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DDCA8FE22E0C29B600438965 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 		A93A953929CC810C00F8E227 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */,
+				DDCA8FE22E0C29B600438965 /* RegisterView.swift */,
+				DDCA8FDE2E0C298300438965 /* LoginView.swift */,
 				DDCA8FDC2E09E81100438965 /* AuthView.swift */,
 				DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */,
 				DDCA8FD52E09E7A600438965 /* DecomposeHelpers */,
@@ -160,9 +169,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDCA8FDB2E09E7FA00438965 /* RootView 2.swift in Sources */,
+				DDCA8FDF2E0C298500438965 /* LoginView.swift in Sources */,
 				DDCA8FD02E09E11900438965 /* iosApp.swift in Sources */,
 				DDCA8FDD2E09E81100438965 /* AuthView.swift in Sources */,
+				DDCA8FE52E0C2A4200438965 /* WelcomeView.swift in Sources */,
 				DDCA8FD72E09E7C700438965 /* MutableValue.swift in Sources */,
+				DDCA8FE32E0C29B900438965 /* RegisterView.swift in Sources */,
 				DDCA8FD92E09E7DD00438965 /* ObservableValue.swift in Sources */,
 				DDCA8FD22E09E2FC00438965 /* RootHolder.swift in Sources */,
 			);

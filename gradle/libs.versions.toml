@@ -49,7 +49,7 @@ androidx-activityCompose = { module = "androidx.activity:activity-compose", vers
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-ext = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
 essenty = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty"}
-essenty-stateKeeper = { module = "com.arkivanov.essenty:state-keeper", version.ref = "essenty"}
+essenty-coroutines = { module = "com.arkivanov.essenty:lifecycle-coroutines", version.ref = "essenty" }
 
 [plugins]
 
