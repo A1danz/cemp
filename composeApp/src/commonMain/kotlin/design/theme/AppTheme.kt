@@ -62,27 +62,13 @@ private val LocalAppTypography = staticCompositionLocalOf {
  * Это нужно для того, чтобы светлые и темные цвета имели одинаковую структуру.
  */
 interface AppColorsInterface {
-    // Основные цвета
-    val primary: androidx.compose.ui.graphics.Color
-    val onPrimary: androidx.compose.ui.graphics.Color
-    val secondary: androidx.compose.ui.graphics.Color
-    val onSecondary: androidx.compose.ui.graphics.Color
-    
     // Фоны
-    val background: androidx.compose.ui.graphics.Color
-    val onBackground: androidx.compose.ui.graphics.Color
-    val surface: androidx.compose.ui.graphics.Color
-    val onSurface: androidx.compose.ui.graphics.Color
+    val mainBackgroundColor: androidx.compose.ui.graphics.Color
+    val secondaryBackgroundColor: androidx.compose.ui.graphics.Color
     
-    // Состояния
-    val error: androidx.compose.ui.graphics.Color
-    val onError: androidx.compose.ui.graphics.Color
-    val success: androidx.compose.ui.graphics.Color
-    val warning: androidx.compose.ui.graphics.Color
-    
-    // Дополнительные
-    val outline: androidx.compose.ui.graphics.Color
-    val disabled: androidx.compose.ui.graphics.Color
+    // Текст
+    val blueTextColor: androidx.compose.ui.graphics.Color
+    val whiteColor: androidx.compose.ui.graphics.Color
 }
 
 /**

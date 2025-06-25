@@ -5,150 +5,104 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-/**
- * ✍️ Типографика приложения
- * 
- * Этот объект содержит все стили текста, которые используются в приложении.
- * Изменив стиль здесь, он изменится на всех платформах (iOS, Android, Desktop).
- * 
- * Как использовать:
- * - В Compose: Text(style = AppTypography.heading1)
- * - На iOS: нужно будет адаптировать размеры и веса шрифтов
- */
 object AppTypography {
-    
-    // MARK: - Заголовки
-    
-    /** 
-     * Большой заголовок (например, название экрана)
-     * Пример: "Матчи", "Команды"
-     */
-    val heading1 = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Bold,    // Замени на нужный вес
-        fontSize = 32.sp,               // Замени на нужный размер
-        lineHeight = 40.sp              // Замени на нужную высоту строки
+
+    // 36sp
+    val text36ExtraBold = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 36.sp,
+        lineHeight = 44.sp
     )
     
-    /** 
-     * Средний заголовок (например, заголовки секций)
-     * Пример: "Предстоящие матчи", "Топ команды"
-     */
-    val heading2 = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Bold,    // Замени на нужный вес
-        fontSize = 24.sp,               // Замени на нужный размер
-        lineHeight = 32.sp              // Замени на нужную высоту строки
+    // 28sp
+    val text28Bold = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Bold,
+        fontSize = 28.sp,
+        lineHeight = 36.sp
     )
     
-    /** 
-     * Малый заголовок (например, заголовки карточек)
-     * Пример: название команды в карточке
-     */
-    val heading3 = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.SemiBold, // Замени на нужный вес
-        fontSize = 20.sp,               // Замени на нужный размер
-        lineHeight = 28.sp              // Замени на нужную высоту строки
+    val text28SemiBold = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 28.sp,
+        lineHeight = 36.sp
     )
     
-    /** 
-     * Подзаголовок (например, субтитры)
-     * Пример: дата матча, счет
-     */
-    val subtitle = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Medium,  // Замени на нужный вес
-        fontSize = 16.sp,               // Замени на нужный размер
-        lineHeight = 24.sp              // Замени на нужную высоту строки
+    // 24sp
+    val text24Bold = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        lineHeight = 32.sp
     )
     
-    
-    // MARK: - Основной текст
-    
-    /** 
-     * Основной текст (например, описания)
-     * Пример: описание матча, информация о команде
-     */
-    val body1 = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Normal,  // Замени на нужный вес
-        fontSize = 16.sp,               // Замени на нужный размер
-        lineHeight = 24.sp              // Замени на нужную высоту строки
+    val text24Medium = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
+        fontSize = 24.sp,
+        lineHeight = 32.sp
     )
     
-    /** 
-     * Второстепенный текст (меньше основного)
-     * Пример: дополнительная информация
-     */
-    val body2 = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Normal,  // Замени на нужный вес
-        fontSize = 14.sp,               // Замени на нужный размер
-        lineHeight = 20.sp              // Замени на нужную высоту строки
+    // 20sp
+    val text20SemiBold = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 20.sp,
+        lineHeight = 28.sp
     )
     
-    
-    // MARK: - Кнопки
-    
-    /** 
-     * Текст на кнопках
-     * Пример: "Войти", "Зарегистрироваться"
-     */
-    val button = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Medium,  // Замени на нужный вес
-        fontSize = 16.sp,               // Замени на нужный размер
-        lineHeight = 24.sp              // Замени на нужную высоту строки
+    // 16sp
+    val text16SemiBold = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 16.sp,
+        lineHeight = 24.sp
     )
     
-    
-    // MARK: - Подписи и мелкий текст
-    
-    /** 
-     * Подписи (например, под изображениями)
-     * Пример: "Обновлено 5 минут назад"
-     */
-    val caption = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Normal,  // Замени на нужный вес
-        fontSize = 12.sp,               // Замени на нужный размер
-        lineHeight = 16.sp              // Замени на нужную высоту строки
+    // 14sp
+    val text14Bold = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp,
+        lineHeight = 20.sp
     )
     
-    /** 
-     * Очень мелкий текст (например, правовая информация)
-     * Пример: "Условия использования"
-     */
-    val overline = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Normal,  // Замени на нужный вес
-        fontSize = 10.sp,               // Замени на нужный размер
-        lineHeight = 16.sp              // Замени на нужную высоту строки
+    val text14SemiBold = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp,
+        lineHeight = 20.sp
     )
     
-    
-    // MARK: - Специальные стили
-    
-    /** 
-     * Текст для ввода (в полях ввода)
-     * Пример: текст в TextField
-     */
-    val input = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Normal,  // Замени на нужный вес
-        fontSize = 16.sp,               // Замени на нужный размер
-        lineHeight = 24.sp              // Замени на нужную высоту строки
+    val text14Medium = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        lineHeight = 20.sp
     )
     
-    /** 
-     * Текст-плейсхолдер (подсказки в полях ввода)
-     * Пример: "Введите email"
-     */
-    val placeholder = TextStyle(
-        fontFamily = FontFamily.Default, // Замени на свой шрифт
-        fontWeight = FontWeight.Normal,  // Замени на нужный вес
-        fontSize = 16.sp,               // Замени на нужный размер
-        lineHeight = 24.sp              // Замени на нужную высоту строки
+    val text14MediumPlaceholder = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        lineHeight = 20.sp
     )
+    
+    // 12sp
+    val text12SemiBold = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 12.sp,
+        lineHeight = 16.sp
+    )
+    
+    val text12Medium = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        lineHeight = 16.sp
+    )
+    
 } 
