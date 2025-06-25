@@ -37,21 +37,22 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.ui)
-            implementation(compose.material)
-            api(project(":shared"))
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.essenty.coroutines)
             implementation(libs.koin.core)
             api(libs.essenty)
             api(libs.decompose)
+            api(project(":shared"))
         }
 
         androidMain.dependencies {
+            implementation(compose.material3)
             implementation(compose.uiTooling)
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.ui)
+            implementation(compose.material)
             implementation(libs.androidx.activityCompose)
             implementation(libs.decompose.ext)
             implementation(libs.koin.android)
