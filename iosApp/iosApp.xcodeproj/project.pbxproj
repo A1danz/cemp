@@ -150,7 +150,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :composeApp:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :composeApp:assembleDebugAppleFrameworkForXcode\necho \"Cleaning extended attributes from all build artifacts...\"\nfind \"$BUILD_DIR\" -name \"ComposeApp.framework\" -exec xattr -cr {} \\;\nfind \"$BUILD_DIR\" -name \"*.dylib\" -exec xattr -cr {} \\;\nfind \"$BUILD_DIR\" -name \"*.a\" -exec xattr -cr {} \\;\nfind \"$BUILD_DIR\" -name \"*.app\" -exec xattr -cr {} \\;\nfind \"$BUILD_DIR\" -type f -exec xattr -c {} \\; 2>/dev/null || true\necho \"Cleaned extended attributes from all build artifacts\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -288,8 +288,10 @@
 		A93A954629CC810D00F8E227 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -310,8 +312,10 @@
 		A93A954729CC810D00F8E227 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;

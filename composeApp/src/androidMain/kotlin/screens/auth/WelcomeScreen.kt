@@ -11,7 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import com.cemp.feature.auth.presentation.component.WelcomeComponent
+import component.WelcomeComponent
+
+//import com.cemp.feature.auth.presentation.component.WelcomeComponent
 
 @Composable
 fun WelcomeScreen(
