@@ -14,11 +14,6 @@ object AppColors : AppColorsInterface {
     val whiteColor = Color(0xFFFFFFFF)
 }
 
-/**
- * 🌙 Темные цвета (для Dark Mode)
- * 
- * Когда пользователь включает темную тему, используются эти цвета.
- */
 object AppColorsDark : AppColorsInterface {
     val mainBackgroundColor = Color(0xFF0D0F11)
     val secondaryBackgroundColor = Color(0xFF141618)
