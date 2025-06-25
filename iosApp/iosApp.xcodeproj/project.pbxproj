@@ -7,12 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A93A953B29CC810C00F8E227 /* iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A953A29CC810C00F8E227 /* iosApp.swift */; };
+		DDCA8FE92E0C3F8C00438965 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */; };
+		DDCA8FEA2E0C3F8C00438965 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE22E0C29B600438965 /* RegisterView.swift */; };
+		DDCA8FEB2E0C3F8C00438965 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDE2E0C298300438965 /* LoginView.swift */; };
+		DDCA8FEC2E0C3F8C00438965 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDC2E09E81100438965 /* AuthView.swift */; };
+		DDCA8FED2E0C3F8C00438965 /* RootView 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */; };
+		DDCA8FEE2E0C3F8C00438965 /* StateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE62E0C31E700438965 /* StateValue.swift */; };
+		DDCA8FEF2E0C3F8C00438965 /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD82E09E7DD00438965 /* ObservableValue.swift */; };
+		DDCA8FF02E0C3F8C00438965 /* MutableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD62E09E7C400438965 /* MutableValue.swift */; };
+		DDCA8FF12E0C3F8C00438965 /* RootHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD12E09E2FC00438965 /* RootHolder.swift */; };
+		DDCA8FF22E0C3F8C00438965 /* iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A953A29CC810C00F8E227 /* iosApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A93A953729CC810C00F8E227 /* Multiplatform App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Multiplatform App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93A953A29CC810C00F8E227 /* iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosApp.swift; sourceTree = "<group>"; };
+		DDCA8FD12E09E2FC00438965 /* RootHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHolder.swift; sourceTree = "<group>"; };
+		DDCA8FD62E09E7C400438965 /* MutableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableValue.swift; sourceTree = "<group>"; };
+		DDCA8FD82E09E7DD00438965 /* ObservableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
+		DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootView 2.swift"; sourceTree = "<group>"; };
+		DDCA8FDC2E09E81100438965 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		DDCA8FDE2E0C298300438965 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DDCA8FE22E0C29B600438965 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		DDCA8FE62E0C31E700438965 /* StateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +64,13 @@
 		A93A953929CC810C00F8E227 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */,
+				DDCA8FE22E0C29B600438965 /* RegisterView.swift */,
+				DDCA8FDE2E0C298300438965 /* LoginView.swift */,
+				DDCA8FDC2E09E81100438965 /* AuthView.swift */,
+				DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */,
+				DDCA8FD52E09E7A600438965 /* DecomposeHelpers */,
+				DDCA8FD12E09E2FC00438965 /* RootHolder.swift */,
 				A93A953A29CC810C00F8E227 /* iosApp.swift */,
 			);
 			path = iosApp;
@@ -58,6 +83,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DDCA8FD52E09E7A600438965 /* DecomposeHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				DDCA8FE62E0C31E700438965 /* StateValue.swift */,
+				DDCA8FD82E09E7DD00438965 /* ObservableValue.swift */,
+				DDCA8FD62E09E7C400438965 /* MutableValue.swift */,
+			);
+			path = DecomposeHelpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -65,7 +100,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A93A954529CC810D00F8E227 /* Build configuration list for PBXNativeTarget "iosApp" */;
 			buildPhases = (
-				A9D80A052AAB5CDE006C8738 /* ShellScript */,
+				A9D80A052AAB5CDE006C8738 /* Run Script */,
 				A93A953329CC810C00F8E227 /* Sources */,
 				A93A953429CC810C00F8E227 /* Frameworks */,
 			);
@@ -111,7 +146,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A9D80A052AAB5CDE006C8738 /* ShellScript */ = {
+		A9D80A052AAB5CDE006C8738 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -120,13 +155,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/..\"\n./../gradlew :sample:composeApp:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :composeApp:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -135,7 +171,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A93A953B29CC810C00F8E227 /* iosApp.swift in Sources */,
+				DDCA8FE92E0C3F8C00438965 /* WelcomeView.swift in Sources */,
+				DDCA8FEA2E0C3F8C00438965 /* RegisterView.swift in Sources */,
+				DDCA8FEB2E0C3F8C00438965 /* LoginView.swift in Sources */,
+				DDCA8FEC2E0C3F8C00438965 /* AuthView.swift in Sources */,
+				DDCA8FED2E0C3F8C00438965 /* RootView 2.swift in Sources */,
+				DDCA8FEE2E0C3F8C00438965 /* StateValue.swift in Sources */,
+				DDCA8FEF2E0C3F8C00438965 /* ObservableValue.swift in Sources */,
+				DDCA8FF02E0C3F8C00438965 /* MutableValue.swift in Sources */,
+				DDCA8FF12E0C3F8C00438965 /* RootHolder.swift in Sources */,
+				DDCA8FF22E0C3F8C00438965 /* iosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +241,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lsqlite3";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -249,6 +295,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-lsqlite3";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -270,6 +317,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = sample.app.iosApp;
 				PRODUCT_NAME = "Multiplatform App";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -292,6 +343,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = sample.app.iosApp;
 				PRODUCT_NAME = "Multiplatform App";
 				SWIFT_EMIT_LOC_STRINGS = YES;
