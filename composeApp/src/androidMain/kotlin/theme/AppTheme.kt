@@ -1,4 +1,4 @@
-package design.theme
+package theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
@@ -173,5 +173,5 @@ object Theme {
 
 private fun parseHexColor(hex: String): Long {
     val cleanHex = hex.removePrefix("#")
-    return ("FF" + cleanHex).toLong(16)
+    return ("FF$cleanHex").toLong(16)
 } 
