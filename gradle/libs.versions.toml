@@ -21,6 +21,7 @@ resources-graphics = "0.9.0"
 firebase-bom = "32.7.0"
 firebase-gitlive = "1.13.0"
 google-services = "4.4.0"
+coil = "3.2.0"
 
 [libraries]
 
@@ -60,6 +61,9 @@ resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
 resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "resources" }
 resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
 resources-graphics = { module = "dev.icerock.moko:graphics", version.ref = "resources-graphics" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+coil = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
 firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 firebaseAnalytics = { module = "com.google.firebase:firebase-analytics-ktx" }
 firebaseAnalyticsKmp = { module = "dev.gitlive:firebase-analytics", version.ref = "firebase-gitlive" }
