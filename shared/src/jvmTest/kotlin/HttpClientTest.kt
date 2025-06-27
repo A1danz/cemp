@@ -1,3 +1,4 @@
+import com.cemp.data.network.HttpEngineFactory
 import com.cemp.data.network.createHttpClient
 import com.cemp.data.repository.MatchesRepositoryImpl
 import com.cemp.data.repository.TeamsRepositoryImpl
@@ -7,9 +8,10 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
 import org.junit.Test
 
+// not unit-test, only for test network requests without build full project
 class HttpClientTest {
 
-    private val client = createHttpClient(null, Json {
+    private val client = createHttpClient(HttpEngineFactory().createEngine(), Json {
         ignoreUnknownKeys = true
         isLenient = true
 
