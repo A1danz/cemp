@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.resources)
+    alias(libs.plugins.google.services)
 }
 
 kotlin {
