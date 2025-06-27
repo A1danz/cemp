@@ -21,6 +21,7 @@ import org.koin.core.component.inject
 class DefaultTeamDetailsComponent(
     componentContext: ComponentContext,
     val teamId: Int,
+    private val onBack: () -> Unit,
 ) : TeamDetailsComponent, ComponentContext by componentContext, KoinComponent {
 
     private val _state = MutableValue(TeamDetailsComponent.Model.createInitialValue())
@@ -33,6 +34,12 @@ class DefaultTeamDetailsComponent(
 
     init {
         loadMatches()
+    }
+
+    override fun onIntent(intent: TeamDetailsComponent.Intent) {
+        when (intent) {
+            TeamDetailsComponent.Intent.BackClicked -> onBack()
+        }
     }
 
     private fun loadMatches() {

@@ -21,6 +21,7 @@
 		DDCA8FF12E0C3F8C00438965 /* RootHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD12E09E2FC00438965 /* RootHolder.swift */; };
 		DDCA8FF22E0C3F8C00438965 /* iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A953A29CC810C00F8E227 /* iosApp.swift */; };
 		DDCA8FF32E0C3F8C00438965 /* MatchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FF42E0C3F8C00438965 /* MatchDetailView.swift */; };
+		DDCA8FF52E0C3F8C00438965 /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FF62E0C3F8C00438965 /* TeamDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		DDCA8FE62E0C31E700438965 /* StateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateValue.swift; sourceTree = "<group>"; };
 		DDCA8FF42E0C3F8C00438965 /* MatchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailView.swift; sourceTree = "<group>"; };
+		DDCA8FF62E0C3F8C00438965 /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				DDCA8FDC2E09E81100438965 /* AuthView.swift */,
 				DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */,
 				DDCA8FF42E0C3F8C00438965 /* MatchDetailView.swift */,
+				DDCA8FF62E0C3F8C00438965 /* TeamDetailView.swift */,
 				DDCA8FD52E09E7A600438965 /* DecomposeHelpers */,
 				DDCA8FD12E09E2FC00438965 /* RootHolder.swift */,
 				A93A953A29CC810C00F8E227 /* iosApp.swift */,
@@ -257,6 +260,7 @@
 				DDCA8FF12E0C3F8C00438965 /* RootHolder.swift in Sources */,
 				DDCA8FF22E0C3F8C00438965 /* iosApp.swift in Sources */,
 				DDCA8FF32E0C3F8C00438965 /* MatchDetailView.swift in Sources */,
+				DDCA8FF52E0C3F8C00438965 /* TeamDetailView.swift in Sources */,
 				DDA513CA2E0E8A46000D7D6F /* ResourceExtesnsion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

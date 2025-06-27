@@ -65,6 +65,7 @@ class DefaultMainComponent(
                 DefaultTeamDetailsComponent(
                     componentContext = context,
                     teamId = tab.teamId,
+                    onBack = { navigation.pop() },
                 )
             )
         }
