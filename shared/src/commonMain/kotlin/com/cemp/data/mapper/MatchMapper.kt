@@ -28,7 +28,7 @@ fun MatchResponse.getTeamInfo(teamId: Int): MatchTeamInfo {
 
 fun String.toMatchStatus(): MatchStatus {
     return when (this) {
-        "cancelled" -> MatchStatus.CANCELLED
+        "canceled" -> MatchStatus.CANCELLED
         "finished" -> MatchStatus.FINISHED
         "not_started" -> MatchStatus.NOT_STARTED
         "postponed" -> MatchStatus.POSTPONED

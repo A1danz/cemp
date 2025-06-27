@@ -7,6 +7,7 @@ import com.cemp.domain.model.TeamInMatch
 
 fun TeamInMatchResponse.toTeamInMatch(): TeamInMatch {
     return TeamInMatch(
+        id = id,
         name = name,
         imageUrl = imageUrl
     )

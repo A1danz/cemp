@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 data class MatchResponse(
     @SerialName("begin_at")
     @Serializable(with = InstantSerializer::class)
-    val beginAt: Instant,
+    val beginAt: Instant?,
     @SerialName("id")
     val id: Int,
     @SerialName("status")
