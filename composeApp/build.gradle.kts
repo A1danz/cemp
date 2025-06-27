@@ -26,6 +26,7 @@ kotlin {
 
                 export(libs.decompose)
                 export(libs.essenty)
+                export(project(":shared"))
                 export("dev.icerock.moko:resources:0.24.5")
                 export("dev.icerock.moko:graphics:0.9.0")
             }

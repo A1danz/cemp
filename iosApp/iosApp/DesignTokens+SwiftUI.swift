@@ -1,7 +1,7 @@
 import SwiftUI
-import Shared
+import ComposeApp
 
-extension Color {
+extension SwiftUI.Color {
     init(appColor: AppColor) {
         let hex = appColor.hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
@@ -43,43 +43,43 @@ class CEMPTheme: ObservableObject {
         isDarkMode = (colorScheme == .dark)
     }
     
-    var mainBackground: Color {
-        Color(appColor: isDarkMode ? 
-            Shared.DarkTheme().mainBackground : 
-            Shared.LightTheme().mainBackground)
+    var mainBackground: SwiftUI.Color {
+        Color(appColor: isDarkMode ?
+            DarkTheme().mainBackground :
+            LightTheme().mainBackground)
     }
     
-    var secondaryBackground: Color {
-        Color(appColor: isDarkMode ? 
-            Shared.DarkTheme().secondaryBackground : 
-            Shared.LightTheme().secondaryBackground)
+    var secondaryBackground: SwiftUI.Color {
+        Color(appColor: isDarkMode ?
+            DarkTheme().secondaryBackground :
+            LightTheme().secondaryBackground)
     }
     
-    var blueText: Color {
-        Color(appColor: isDarkMode ? 
-            Shared.DarkTheme().blueText : 
-            Shared.LightTheme().blueText)
+    var blueText: SwiftUI.Color {
+        Color(appColor: isDarkMode ?
+            DarkTheme().blueText :
+            LightTheme().blueText)
     }
     
-    var textColor: Color {
-        Color(appColor: isDarkMode ? 
-            Shared.DarkTheme().textColor : 
-            Shared.LightTheme().textColor)
+    var textColor: SwiftUI.Color {
+        Color(appColor: isDarkMode ?
+            DarkTheme().textColor :
+            LightTheme().textColor)
     }
     
-    var text36ExtraBold: Font { Font(fontSpec: Shared.Typography().text36ExtraBold) }
-    var text28Bold: Font { Font(fontSpec: Shared.Typography().text28Bold) }
-    var text28SemiBold: Font { Font(fontSpec: Shared.Typography().text28SemiBold) }
-    var text24Bold: Font { Font(fontSpec: Shared.Typography().text24Bold) }
-    var text24Medium: Font { Font(fontSpec: Shared.Typography().text24Medium) }
-    var text20SemiBold: Font { Font(fontSpec: Shared.Typography().text20SemiBold) }
-    var text16SemiBold: Font { Font(fontSpec: Shared.Typography().text16SemiBold) }
-    var text14Bold: Font { Font(fontSpec: Shared.Typography().text14Bold) }
-    var text14SemiBold: Font { Font(fontSpec: Shared.Typography().text14SemiBold) }
-    var text14Medium: Font { Font(fontSpec: Shared.Typography().text14Medium) }
-    var text14MediumPlaceholder: Font { Font(fontSpec: Shared.Typography().text14MediumPlaceholder) }
-    var text12SemiBold: Font { Font(fontSpec: Shared.Typography().text12SemiBold) }
-    var text12Medium: Font { Font(fontSpec: Shared.Typography().text12Medium) }
+    var text36ExtraBold: Font { Font(fontSpec: Typography().text36ExtraBold) }
+    var text28Bold: Font { Font(fontSpec: Typography().text28Bold) }
+    var text28SemiBold: Font { Font(fontSpec: Typography().text28SemiBold) }
+    var text24Bold: Font { Font(fontSpec: Typography().text24Bold) }
+    var text24Medium: Font { Font(fontSpec: Typography().text24Medium) }
+    var text20SemiBold: Font { Font(fontSpec: Typography().text20SemiBold) }
+    var text16SemiBold: Font { Font(fontSpec: Typography().text16SemiBold) }
+    var text14Bold: Font { Font(fontSpec: Typography().text14Bold) }
+    var text14SemiBold: Font { Font(fontSpec: Typography().text14SemiBold) }
+    var text14Medium: Font { Font(fontSpec: Typography().text14Medium) }
+    var text14MediumPlaceholder: Font { Font(fontSpec: Typography().text14MediumPlaceholder) }
+    var text12SemiBold: Font { Font(fontSpec: Typography().text12SemiBold) }
+    var text12Medium: Font { Font(fontSpec: Typography().text12Medium) }
 } 
 
 
