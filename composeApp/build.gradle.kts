@@ -66,6 +66,8 @@ kotlin {
             implementation(libs.decompose.ext)
             implementation(libs.koin.android)
             implementation(libs.coil.compose)
+            implementation(libs.coil)
+            implementation(libs.coil.okhttp)
         }
 
         jvmMain.dependencies {

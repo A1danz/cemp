@@ -8,7 +8,7 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import component.RootComponent
 import screens.auth.AuthScreen
-import screens.auth.MainScreen
+import screens.main.MainScreen
 
 @Composable
 fun RootScreen(component: RootComponent) {

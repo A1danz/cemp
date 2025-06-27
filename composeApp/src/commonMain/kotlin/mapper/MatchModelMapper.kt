@@ -12,6 +12,7 @@ import com.cemp.SharedRes.strings as StringRes
 
 fun Match.toUi(): MatchModel {
     return MatchModel(
+        id = id,
         tournamentName = tournamentName,
         status = this.status.toUi(),
         firstTeam = this.firstTeamInfo.toUi(),
