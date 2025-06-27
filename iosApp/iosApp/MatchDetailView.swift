@@ -45,7 +45,7 @@ struct MatchDetailView: View {
                 .scaleEffect(1.5)
                 .progressViewStyle(CircularProgressViewStyle(tint: theme.blueText))
             
-            Text("Загрузка данных матча...")
+            Text(StringRes.feature_match_detail_loading.desc().localized())
                 .font(theme.text16SemiBold)
                 .foregroundColor(theme.textColor)
                 .padding(.top, 16)
@@ -59,11 +59,11 @@ struct MatchDetailView: View {
                 .font(.system(size: 48))
                 .foregroundColor(.red)
             
-            Text("Ошибка загрузки")
+            Text(StringRes.feature_match_detail_error_title.desc().localized())
                 .font(theme.text20SemiBold)
                 .foregroundColor(theme.textColor)
             
-            Text("Не удалось загрузить информацию о матче")
+            Text(StringRes.feature_match_detail_error_message.desc().localized())
                 .font(theme.text14Medium)
                 .foregroundColor(theme.textColor.opacity(0.7))
                 .multilineTextAlignment(.center)
@@ -109,7 +109,7 @@ struct MatchDetailView: View {
                     .foregroundColor(theme.textColor)
             }
             
-            Text("Детали матча")
+            Text(StringRes.feature_match_detail_title.desc().localized())
                 .font(theme.text20SemiBold)
                 .foregroundColor(theme.textColor)
             
@@ -233,7 +233,7 @@ struct MatchDetailView: View {
     private var playersSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Text("Составы команд")
+                Text(StringRes.feature_match_detail_team_rosters.desc().localized())
                     .font(theme.text20SemiBold)
                     .foregroundColor(theme.textColor)
                 

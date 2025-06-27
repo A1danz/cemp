@@ -46,8 +46,21 @@
 
     <!--    Feature: team detail-->
     <string name="feature_team_detail_title">Team</string>
+    <string name="feature_team_detail_loading">Loading team data...</string>
+    <string name="feature_team_detail_error_title">Loading Error</string>
+    <string name="feature_team_detail_error_message">Failed to load team information</string>
     <string name="feature_team_recent_matches">Recent matches</string>
 
     <!--    Feature: teams leaderboard-->
     <string name="feature_teams_leaderboard_title">World Ranking</string>
+    <string name="feature_teams_leaderboard_loading">Loading ranking...</string>
+    <string name="feature_teams_leaderboard_error_title">Loading Error</string>
+    <string name="feature_teams_leaderboard_error_message">Failed to load team rankings</string>
+
+    <!--    Feature: match detail-->
+    <string name="feature_match_detail_title">Match Details</string>
+    <string name="feature_match_detail_loading">Loading match data...</string>
+    <string name="feature_match_detail_error_title">Loading Error</string>
+    <string name="feature_match_detail_error_message">Failed to load match information</string>
+    <string name="feature_match_detail_team_rosters">Team Rosters</string>
 </resources>

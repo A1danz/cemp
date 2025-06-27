@@ -53,7 +53,7 @@ struct WorldRankingView: View {
     private var headerView: some View {
         VStack(spacing: 12) {
             HStack {
-                Text("Мировой рейтинг")
+                Text(StringRes.feature_teams_leaderboard_title.desc().localized())
                     .font(theme.text28Bold)
                     .foregroundColor(theme.textColor)
                 
@@ -72,7 +72,7 @@ struct WorldRankingView: View {
                 .scaleEffect(1.5)
                 .progressViewStyle(CircularProgressViewStyle(tint: theme.blueText))
             
-            Text("Загрузка рейтинга...")
+            Text(StringRes.feature_teams_leaderboard_loading.desc().localized())
                 .font(theme.text16SemiBold)
                 .foregroundColor(theme.textColor)
                 .padding(.top, 16)
@@ -89,11 +89,11 @@ struct WorldRankingView: View {
                 .font(.system(size: 48))
                 .foregroundColor(.red)
             
-            Text("Ошибка загрузки")
+            Text(StringRes.feature_teams_leaderboard_error_title.desc().localized())
                 .font(theme.text20SemiBold)
                 .foregroundColor(theme.textColor)
             
-            Text("Не удалось загрузить рейтинг команд")
+            Text(StringRes.feature_teams_leaderboard_error_message.desc().localized())
                 .font(theme.text14Medium)
                 .foregroundColor(theme.textColor.opacity(0.7))
                 .multilineTextAlignment(.center)

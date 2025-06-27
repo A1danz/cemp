@@ -46,7 +46,7 @@ struct TeamDetailView: View {
                 .scaleEffect(1.5)
                 .progressViewStyle(CircularProgressViewStyle(tint: theme.blueText))
             
-            Text("Загрузка данных команды...")
+            Text(StringRes.feature_team_detail_loading.desc().localized())
                 .font(theme.text16SemiBold)
                 .foregroundColor(theme.textColor)
                 .padding(.top, 16)
@@ -60,11 +60,11 @@ struct TeamDetailView: View {
                 .font(.system(size: 48))
                 .foregroundColor(.red)
             
-            Text("Ошибка загрузки")
+            Text(StringRes.feature_team_detail_error_title.desc().localized())
                 .font(theme.text20SemiBold)
                 .foregroundColor(theme.textColor)
             
-            Text("Не удалось загрузить информацию о команде")
+            Text(StringRes.feature_team_detail_error_message.desc().localized())
                 .font(theme.text14Medium)
                 .foregroundColor(theme.textColor.opacity(0.7))
                 .multilineTextAlignment(.center)
@@ -107,7 +107,7 @@ struct TeamDetailView: View {
                     .foregroundColor(theme.textColor)
             }
             
-            Text("Команда")
+            Text(StringRes.feature_team_detail_title.desc().localized())
                 .font(theme.text20SemiBold)
                 .foregroundColor(theme.textColor)
             
@@ -155,7 +155,7 @@ struct TeamDetailView: View {
     private func rosterSection(team: TeamModel) -> some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Text("Состав")
+                Text(StringRes.common_roster.desc().localized())
                     .font(theme.text20SemiBold)
                     .foregroundColor(theme.textColor)
                 
@@ -214,7 +214,7 @@ struct TeamDetailView: View {
     // MARK: - Recent Matches Section
     private var recentMatchesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Последние матчи")
+            Text(StringRes.feature_team_recent_matches.desc().localized())
                 .font(theme.text20SemiBold)
                 .foregroundColor(theme.textColor)
             
