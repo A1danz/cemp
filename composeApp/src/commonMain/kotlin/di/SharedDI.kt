@@ -1,5 +1,6 @@
 package di
 
+import com.cemp.data.di.featuresModule
 import com.cemp.di.commonModule
 import com.cemp.di.dataModule
 import com.cemp.feature.auth.di.authModule
@@ -12,6 +13,7 @@ fun KoinApplication.connectModules() {
         dataModule,
         commonModule,
         authModule,
+        featuresModule,
     )
 }
 

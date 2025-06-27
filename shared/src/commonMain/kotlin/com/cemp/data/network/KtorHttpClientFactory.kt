@@ -1,5 +1,6 @@
 package com.cemp.data.network
 
+import com.cemp.common.ext.logErr
 import com.cemp.shared.BuildConfig
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngineConfig
@@ -16,13 +17,18 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 fun createHttpClient(
-    engine: HttpClientEngineFactory<HttpClientEngineConfig>?,
+    engine: HttpClientEngineFactory<HttpClientEngineConfig>,
     json: Json,
 ): HttpClient {
-    return engine?.let { HttpClient(it) } ?: HttpClient {
+    return HttpClient(engine) {
         install(Logging) {
             level = LogLevel.ALL
-            logger = Logger.SIMPLE
+
+            logger = object : Logger {
+                override fun log(message: String) {
+                    println("HTTP Client: $message")
+                }
+            }
         }
 
         install(ContentNegotiation) {

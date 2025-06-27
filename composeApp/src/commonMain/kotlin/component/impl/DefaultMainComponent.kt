@@ -5,6 +5,7 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
 import component.MainComponent
 import kotlinx.coroutines.CoroutineScope
@@ -18,6 +19,12 @@ class DefaultMainComponent(
 
     private val navigation = StackNavigation<MainComponent.Tab>()
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+
+    init {
+        navigation.subscribe {
+            it.onComplete
+        }
+    }
 
     override val childStack: Value<ChildStack<MainComponent.Tab, MainComponent.Child>> =
         childStack(
@@ -33,9 +40,29 @@ class DefaultMainComponent(
         context: ComponentContext
     ): MainComponent.Child =
         when (tab) {
-            MainComponent.Tab.Matches -> MainComponent.Child.Matches(DefaultMatchesComponent(context))
+            MainComponent.Tab.Matches -> MainComponent.Child.Matches(
+                DefaultMatchesComponent(
+                    componentContext = context,
+                    onMatchClick = { navigation.push(MainComponent.Tab.MatchDetails(it)) },
+                ),
+            )
             MainComponent.Tab.TeamsLeaderboard -> MainComponent.Child.TeamsLeaderboard(
-                DefaultTeamsLeaderboardComponent(context)
+                DefaultTeamsLeaderboardComponent(
+                    componentContext = context,
+                    onTeamClicked = { navigation.push(MainComponent.Tab.TeamDetails(it)) })
+            )
+
+            is MainComponent.Tab.MatchDetails -> MainComponent.Child.MatchDetails(
+                DefaultMatchDetailsComponent(
+                    componentContext = context,
+                    match = tab.match,
+                )
+            )
+            is MainComponent.Tab.TeamDetails -> MainComponent.Child.TeamDetails(
+                DefaultTeamDetailsComponent(
+                    componentContext = context,
+                    teamId = tab.teamId,
+                )
             )
         }
 

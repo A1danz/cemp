@@ -47,6 +47,8 @@ kotlin {
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqlDelight.driver.android)
+            implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+            implementation("com.google.firebase:firebase-analytics-ktx")
         }
 
         jvmMain.dependencies {
@@ -58,6 +60,7 @@ kotlin {
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
             implementation(libs.sqlDelight.driver.native)
+            implementation(libs.firebaseAnalyticsKmp)
         }
 
     }

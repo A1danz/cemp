@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.resources)
+    alias(libs.plugins.google.services)
 }
 
 kotlin {
@@ -29,6 +30,7 @@ kotlin {
                 export(project(":shared"))
                 export("dev.icerock.moko:resources:0.24.5")
                 export("dev.icerock.moko:graphics:0.9.0")
+                export(project(":shared"))
             }
         }
 
@@ -52,6 +54,7 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.resources.compose)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.datetime)
             api(libs.essenty)
             api(libs.decompose)
             api(project(":shared"))
@@ -62,6 +65,7 @@ kotlin {
             implementation(libs.androidx.activityCompose)
             implementation(libs.decompose.ext)
             implementation(libs.koin.android)
+            implementation(libs.coil.compose)
         }
 
         jvmMain.dependencies {

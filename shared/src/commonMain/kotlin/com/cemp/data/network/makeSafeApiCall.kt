@@ -1,5 +1,6 @@
 package com.cemp.data.network
 
+import com.cemp.common.ext.logErr
 import com.cemp.domain.model.base.ApiError
 import com.cemp.domain.model.base.NetworkResponse
 import com.cemp.domain.model.base.getApiErrorFromHttpCode
@@ -14,6 +15,7 @@ suspend inline fun <reified T> makeSafeApiCall(
     val resp = runCatching {
         apiCall()
     }.getOrElse {
+        logErr("Network err", it)
         return NetworkResponse.Error(ApiError.UnknownError(it))
     }
 

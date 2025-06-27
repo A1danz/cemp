@@ -8,5 +8,5 @@ data class Match(
     val status: MatchStatus,
     val firstTeamInfo: MatchTeamInfo,
     val secondTeamInfo: MatchTeamInfo,
-    val startDate: Instant,
+    val startDate: Instant?,
 )
