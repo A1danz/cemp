@@ -1,4 +1,5 @@
-
+/composeApp/google-services.json
+/iosApp/iosApp/GoogleService-Info.plist
 *.iml
 .gradle
 .idea
