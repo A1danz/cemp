@@ -18,6 +18,7 @@ decompose = "3.3.0"
 essenty = "2.5.0"
 resources = "0.24.5"
 resources-graphics = "0.9.0"
+coil = "3.0.4"
 
 [libraries]
 
@@ -57,6 +58,7 @@ resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
 resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "resources" }
 resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
 resources-graphics = { module = "dev.icerock.moko:graphics", version.ref = "resources-graphics" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 
 [plugins]
 

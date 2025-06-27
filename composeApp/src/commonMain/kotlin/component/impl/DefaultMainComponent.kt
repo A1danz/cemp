@@ -5,6 +5,7 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
 import component.MainComponent
@@ -56,6 +57,8 @@ class DefaultMainComponent(
                 DefaultMatchDetailsComponent(
                     componentContext = context,
                     match = tab.match,
+                    onTeamClicked = { navigation.push(MainComponent.Tab.TeamDetails(it)) },
+                    onBack = { navigation.pop() },
                 )
             )
             is MainComponent.Tab.TeamDetails -> MainComponent.Child.TeamDetails(
