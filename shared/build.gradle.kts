@@ -22,6 +22,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            api(libs.multiplatformSettings)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.kotlinx.serialization.json)
@@ -32,7 +33,6 @@ kotlin {
             implementation(libs.ktor.client.logging)
             implementation(libs.ktor.client.auth)
             implementation(libs.ktor.serialization.kotlinx.json)
-            implementation(libs.multiplatformSettings)
             implementation(libs.multiplatformSettingsCoroutines)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
@@ -79,7 +79,6 @@ sqldelight {
         }
     }
 }
-
 
 
 android {

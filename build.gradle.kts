@@ -5,4 +5,15 @@ plugins {
     alias(libs.plugins.sqlDelight).apply(false)
     alias(libs.plugins.buildConfig).apply(false)
     alias(libs.plugins.android.application).apply(false)
+    alias(libs.plugins.resources).apply(false)
+}
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath(libs.resources.generator)
+    }
 }

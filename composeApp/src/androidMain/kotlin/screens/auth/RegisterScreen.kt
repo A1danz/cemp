@@ -1,25 +1,33 @@
 package screens.auth
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import component.RegisterComponent
+import dev.icerock.moko.resources.compose.stringResource
+import theme.AppTheme
+import theme.Theme
 import ui.component.CempButton
+import ui.component.CempProgressBar
+import ui.component.CempText
 import ui.component.CempTextField
+import com.cemp.SharedRes.strings as stringsRes
 
 @Composable
 fun RegisterScreen(
@@ -35,46 +43,62 @@ fun RegisterContent(
     state: RegisterComponent.Model,
     onIntent: (RegisterComponent.Intent) -> Unit
 ) {
+    val context = LocalContext.current
+
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Theme.colors.mainBackgroundColor),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Text("Register")
-        Spacer(Modifier.height(8.dp))
         if (state.isLoading) {
-            CircularProgressIndicator()
+            CempProgressBar()
+            Spacer(Modifier.height(8.dp))
         }
-        Spacer(Modifier.height(8.dp))
+
+        CempText(
+            stringResource(stringsRes.feature_auth_registration_title),
+            textStyle = Theme.typography.text28Bold
+        )
+
+        Spacer(Modifier.height(16.dp))
 
         Column(
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 36.dp)
         ) {
             CempTextField(
                 value = state.name,
-                label = "Name",
-                error = state.name,
+                label = stringResource(stringsRes.feature_auth_name_placeholder),
+                error = state.nameError?.toString(context),
+                modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.NameChanged(it)) }
             )
 
             CempTextField(
                 value = state.email,
-                label = "E-mail",
-                error = state.emailError,
+                label = stringResource(stringsRes.feature_auth_email_placeholder),
+                error = state.emailError?.toString(context),
+                modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.EmailChanged(it)) }
             )
 
             CempTextField(
                 value = state.username,
-                label = "Username",
+                label = stringResource(stringsRes.feature_auth_username_placeholder),
+                error = state.usernameError?.toString(context),
+                modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.UsernameChanged(it)) },
-                error = state.usernameError
             )
 
             CempTextField(
                 value = state.password,
-                label = "Password",
-                error = state.passwordError,
+                label = stringResource(stringsRes.feature_auth_password_placeholder),
+                error = state.passwordError?.toString(context),
+                modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.PasswordChanged(it)) },
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
@@ -82,25 +106,34 @@ fun RegisterContent(
 
             CempTextField(
                 value = state.confirmPassword,
-                label = "Confirm password",
-                error = state.confirmPasswordError,
+                label = stringResource(stringsRes.feature_auth_confirm_password_placeholder),
+                error = state.confirmPasswordError?.toString(context),
+                modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.ConfirmPasswordChanged(it)) },
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
             )
         }
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(8.dp))
 
-        CempButton("Register") { onIntent(RegisterComponent.Intent.RegisterClicked) }
+        CempButton(
+            stringResource(stringsRes.feature_auth_register_btn),
+            Modifier
+                .fillMaxWidth()
+                .background(Theme.colors.mainBackgroundColor)
+                .padding(horizontal = 48.dp)
+        ) { onIntent(RegisterComponent.Intent.RegisterClicked) }
     }
+
+
 }
 
 @Preview(showBackground = true, name = "Register Screen Preview")
 @Composable
 fun RegisterContentPreview() {
     val previewState = RegisterComponent.Model(
-        name = "John Doe",
+        name = "",
         email = "john.doe@example.com",
         username = "johndoe",
         password = "password123",
@@ -110,9 +143,12 @@ fun RegisterContentPreview() {
         emailError = null,
         usernameError = null,
         passwordError = null,
-        confirmPasswordError = "",
-        globalError = "",
+        confirmPasswordError = null,
+        globalError = null,
     )
-    RegisterContent(state = previewState, onIntent = {})
+
+    AppTheme(true) {
+        RegisterContent(previewState) { }
+    }
 }
 

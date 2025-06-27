@@ -14,14 +14,18 @@ struct WelcomeView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Welcome screen")
+            Image(uiImage: ImageRes.ic_cs.toUIImage()!)
+                       .resizable()
+                       .frame(width: 28, height: 28)
+            
+            Text(StringRes.feature_auth_welcome_title.desc().localized())
                 .font(.title)
                 .padding()
 
             Button(action: {
-                component.onIntent(intent__: WelcomeComponentIntentLoginClicked())
+                component.onIntent(welcomeIntent: WelcomeComponentIntentLoginClicked())
             }) {
-                Text("Login")
+                Text(StringRes.feature_auth_log_in_btn.desc().localized())
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color.blue)
@@ -30,9 +34,9 @@ struct WelcomeView: View {
             }
 
             Button(action: {
-                component.onIntent(intent__: WelcomeComponentIntentRegisterClicked())
+                component.onIntent(welcomeIntent: WelcomeComponentIntentRegisterClicked())
             }) {
-                Text("Register")
+                Text(StringRes.feature_auth_register_btn.desc().localized())
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color.green)

@@ -14,7 +14,7 @@ struct RegisterView: View {
     
     var body: some View {
         ZStack {
-            Text("Register screen")
+            Text(StringRes.feature_auth_registration_title.desc().localized())
 //            component.onIntent(intent_: RegisterComponentIntentNameChanged(value: "Name"))
 //            component.onIntent(intent_: RegisterComponentIntentEmailChanged(value: "Email"))
 //            component.onIntent(intent_: RegisterComponentIntentUsernameChanged(value: "Username"))

@@ -5,8 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.arkivanov.decompose.defaultComponentContext
 import component.impl.DefaultRootComponent
-import org.koin.core.context.startKoin
 import screens.RootScreen
+import theme.AppTheme
 
 class AppActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +15,9 @@ class AppActivity : ComponentActivity() {
         val rootComponent = DefaultRootComponent(defaultComponentContext())
 
         setContent {
-            RootScreen(rootComponent)
+            AppTheme {
+                RootScreen(rootComponent)
+            }
         }
     }
 }

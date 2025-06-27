@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
-
+    alias(libs.plugins.resources)
 }
 
 kotlin {
@@ -26,6 +26,8 @@ kotlin {
 
                 export(libs.decompose)
                 export(libs.essenty)
+                export("dev.icerock.moko:resources:0.24.5")
+                export("dev.icerock.moko:graphics:0.9.0")
             }
         }
 
@@ -37,22 +39,25 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(compose.material3)
+            implementation(compose.runtime)
+            api(libs.resources)
+            api(libs.resources.graphics)
+            implementation(compose.foundation)
+            implementation(compose.ui)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.essenty.coroutines)
             implementation(libs.koin.core)
+            implementation(libs.resources.compose)
+            implementation(libs.kotlinx.coroutines.core)
             api(libs.essenty)
             api(libs.decompose)
             api(project(":shared"))
         }
 
         androidMain.dependencies {
-            implementation(compose.material3)
             implementation(compose.uiTooling)
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.ui)
-            implementation(compose.material)
             implementation(libs.androidx.activityCompose)
             implementation(libs.decompose.ext)
             implementation(libs.koin.android)
@@ -77,6 +82,12 @@ android {
         versionName = "1.0.0"
     }
 }
+
+multiplatformResources {
+    resourcesPackage.set("com.cemp")
+    resourcesClassName.set("SharedRes")
+}
+
 
 compose.desktop {
     application {

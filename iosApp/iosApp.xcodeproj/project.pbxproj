@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DDA513CA2E0E8A46000D7D6F /* ResourceExtesnsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA513C92E0E8A3F000D7D6F /* ResourceExtesnsion.swift */; };
 		DDCA8FE92E0C3F8C00438965 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */; };
 		DDCA8FEA2E0C3F8C00438965 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE22E0C29B600438965 /* RegisterView.swift */; };
 		DDCA8FEB2E0C3F8C00438965 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FDE2E0C298300438965 /* LoginView.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		A93A953729CC810C00F8E227 /* Multiplatform App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Multiplatform App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93A953A29CC810C00F8E227 /* iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosApp.swift; sourceTree = "<group>"; };
+		DDA513C92E0E8A3F000D7D6F /* ResourceExtesnsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceExtesnsion.swift; sourceTree = "<group>"; };
 		DDCA8FD12E09E2FC00438965 /* RootHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHolder.swift; sourceTree = "<group>"; };
 		DDCA8FD62E09E7C400438965 /* MutableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableValue.swift; sourceTree = "<group>"; };
 		DDCA8FD82E09E7DD00438965 /* ObservableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		A93A953929CC810C00F8E227 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				DDA513C72E0E8A29000D7D6F /* ResourceHelpers */,
 				DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */,
 				DDCA8FE22E0C29B600438965 /* RegisterView.swift */,
 				DDCA8FDE2E0C298300438965 /* LoginView.swift */,
@@ -81,6 +84,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DDA513C72E0E8A29000D7D6F /* ResourceHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				DDA513C92E0E8A3F000D7D6F /* ResourceExtesnsion.swift */,
+			);
+			path = ResourceHelpers;
 			sourceTree = "<group>";
 		};
 		DDCA8FD52E09E7A600438965 /* DecomposeHelpers */ = {
@@ -181,6 +192,7 @@
 				DDCA8FF02E0C3F8C00438965 /* MutableValue.swift in Sources */,
 				DDCA8FF12E0C3F8C00438965 /* RootHolder.swift in Sources */,
 				DDCA8FF22E0C3F8C00438965 /* iosApp.swift in Sources */,
+				DDA513CA2E0E8A46000D7D6F /* ResourceExtesnsion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

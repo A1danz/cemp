@@ -22,28 +22,30 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            TextField("Email", text: Binding(
+            TextField(StringRes.feature_auth_email_placeholder.desc().localized(), text: Binding(
                     get: { model.email },
                     set: { newValue in
-                        component.onIntent(intent: LoginComponentIntentEmailChanged(value: newValue))
+                        component.onIntent(loginIntent: LoginComponentIntentEmailChanged(value: newValue))
                     }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
-
             
-            SecureField("Password", text: Binding(
+            
+            SecureField(StringRes.feature_auth_password_placeholder.desc().localized(), text: Binding(
                             get: { model.password },
                             set: { newValue in
-                                component.onIntent(intent: LoginComponentIntentPasswordChanged(value: newValue))
+                                component.onIntent(loginIntent: LoginComponentIntentPasswordChanged(value: newValue))
                             }
                         ))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            Text(model.globalError ?? "global error")
+            Text(model.globalError?.localized() ?? "global error")
+            Text(model.emailError?.localized() ?? "email error")
+            Text(model.passwordError?.localized() ?? "password error")
             
-           Button("Log in") {
-               component.onIntent(intent: LoginComponentIntentLoginClicked())
+            Button(StringRes.feature_auth_log_in_btn.desc().localized()) {
+               component.onIntent(loginIntent: LoginComponentIntentLoginClicked())
            }
         }
     }

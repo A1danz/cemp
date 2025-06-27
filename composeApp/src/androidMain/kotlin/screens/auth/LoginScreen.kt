@@ -1,5 +1,7 @@
 package screens.auth
 
+import android.content.Context
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -8,21 +10,27 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import component.LoginComponent
+import dev.icerock.moko.resources.compose.stringResource
+import theme.AppTheme
+import theme.Theme
 import ui.component.CempButton
+import ui.component.CempProgressBar
+import ui.component.CempText
 import ui.component.CempTextField
+import com.cemp.SharedRes.strings as stringsRes
 
 @Composable
 fun LoginScreen(
@@ -44,34 +52,45 @@ fun LoginContent(
     onIntent: (LoginComponent.Intent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val context: Context = LocalContext.current
+
     Column(
-        modifier = modifier.fillMaxSize().padding(16.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .background(Theme.colors.mainBackgroundColor)
+            .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Cemp Login")
-
         if (state.isLoading) {
+            CempProgressBar()
             Spacer(Modifier.height(8.dp))
-            CircularProgressIndicator()
-            Spacer(Modifier.height(8.dp))
-        } else {
-            Spacer(Modifier.height(16.dp))
         }
+
+        CempText(
+            text = stringResource(stringsRes.feature_auth_login_title),
+            textStyle = Theme.typography.text28Bold,
+        )
+
+        Spacer(Modifier.height(16.dp))
 
         CempTextField(
             value = state.email,
-            label = "Email",
-            error = state.emailError,
-            modifier = Modifier.fillMaxWidth(),
+            label = stringResource(stringsRes.feature_auth_email_placeholder),
+            error = state.emailError?.toString(context),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp),
             onValueChange = { onIntent(LoginComponent.Intent.EmailChanged(it)) }
         )
         Spacer(Modifier.height(8.dp))
         CempTextField(
             value = state.password,
-            label = "Password",
-            error = state.passwordError,
-            modifier = Modifier.fillMaxWidth(),
+            label = stringResource(stringsRes.feature_auth_password_placeholder),
+            error = state.passwordError?.toString(context),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp),
             onValueChange = { onIntent(LoginComponent.Intent.PasswordChanged(it)) },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
@@ -80,17 +99,19 @@ fun LoginContent(
         state.globalError?.let { errorText ->
             Spacer(Modifier.height(8.dp))
             Text(
-                text = errorText,
+                text = errorText.toString(context),
                 color = Color.Red
             )
         }
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(8.dp))
 
         CempButton(
             onClick = { onIntent(LoginComponent.Intent.LoginClicked) },
-            text = "Sign in",
-            modifier = Modifier.fillMaxWidth()
+            text = stringResource(stringsRes.feature_auth_log_in_btn),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 36.dp)
         )
     }
 }
@@ -106,7 +127,11 @@ fun LoginContentPreview() {
         passwordError = null,
         globalError = null
     )
-    LoginContent(state = previewState, onIntent = {})
+
+    AppTheme {
+        LoginContent(state = previewState, onIntent = {})
+    }
+
 }
 
 @Preview(showBackground = true, name = "Login Screen Loading Preview")
@@ -120,7 +145,12 @@ fun LoginContentLoadingPreview() {
         passwordError = null,
         globalError = null
     )
-    LoginContent(state = previewState, onIntent = {})
+
+    AppTheme {
+        LoginContent(state = previewState, onIntent = {})
+
+    }
+
 }
 
 @Preview(showBackground = true, name = "Login Screen With Errors Preview")
@@ -130,9 +160,12 @@ fun LoginContentWithErrorsPreview() {
         email = "test@example",
         password = "123",
         isLoading = false,
-        emailError = "Invalid email format",
-        passwordError = "Password too short",
+        emailError = null,
+        passwordError = null,
         globalError = null,
     )
-    LoginContent(state = previewState, onIntent = {})
+
+    AppTheme {
+        LoginContent(state = previewState, onIntent = {})
+    }
 }

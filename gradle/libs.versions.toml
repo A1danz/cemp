@@ -16,6 +16,8 @@ compose = "1.7.3"
 androidx-activityCompose = "1.9.3"
 decompose = "3.3.0"
 essenty = "2.5.0"
+resources = "0.24.5"
+resources-graphics = "0.9.0"
 
 [libraries]
 
@@ -49,8 +51,12 @@ kstore = { module = "io.github.xxfast:kstore", version.ref = "kstore" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-ext = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
-essenty = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty"}
+essenty = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
 essenty-coroutines = { module = "com.arkivanov.essenty:lifecycle-coroutines", version.ref = "essenty" }
+resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
+resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "resources" }
+resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
+resources-graphics = { module = "dev.icerock.moko:graphics", version.ref = "resources-graphics" }
 
 [plugins]
 
@@ -62,3 +68,4 @@ buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
+resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "resources" }

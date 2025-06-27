@@ -1,0 +1,53 @@
+<resources>
+    <!--    Common -->
+    <string name="common_roster">Roster</string>
+
+    <!--    Feature: main-->
+    <string name="feature_main_matches_tab">Matches</string>
+    <string name="feature_main_teams_leaderboard_tab">Leaderboard</string>
+
+    <!--    Feature: auth-->
+    <string name="feature_auth_welcome_title">Welcome to Cemp</string>
+    <string name="feature_auth_login_title">Cemp Login</string>
+    <string name="feature_auth_registration_title">Cemp Registration</string>
+    <string name="feature_auth_log_in_btn">Log In</string>
+    <string name="feature_auth_register_btn">Register</string>
+    <string name="feature_auth_name_placeholder">Name</string>
+    <string name="feature_auth_username_placeholder">Nickname</string>
+    <string name="feature_auth_email_placeholder">E-mail</string>
+    <string name="feature_auth_password_placeholder">Password</string>
+    <string name="feature_auth_confirm_password_placeholder">Confirm password</string>
+    <string name="feature_auth_confirm_password_placeholder">Confirm password</string>
+    <string name="feature_auth_min_len_error">Length must be at least %d</string>
+    <string name="feature_auth_max_len_error">Length must be no more than %d</string>
+    <string name="feature_auth_range_len_error">Length must be from %d to %d</string>
+    <string name="feature_auth_mask_error">Field must match the format: %s</string>
+    <string name="feature_auth_user_not_found">No user found with this email</string>
+    <string name="feature_auth_incorrect_pwd">Incorrect password</string>
+    <string name="feature_auth_unknown_error">An unknown error has occurred</string>
+    <string name="feature_auth_user_not_found">User not found</string>
+    <string name="feature_auth_pwds_not_equal">Passwords are not equal</string>
+    <string name="feature_auth_user_already_exists">User already exists</string>
+
+    <!--    Feature: matches-->
+    <string name="feature_matches_title">Matches</string>
+    <string name="feature_matches_match_status_cancelled">canceled</string>
+    <string name="feature_matches_match_status_finished">finished</string>
+    <string name="feature_matches_match_status_upcoming">upcoming</string>
+    <string name="feature_matches_match_status_postponed">postponed</string>
+    <string name="feature_matches_match_status_running">running</string>
+
+    <string name="feature_matches_map_status_finished">Finished</string>
+    <string name="feature_matches_map_status_not_played">Not played</string>
+    <string name="feature_matches_map_status_not_started">Not started</string>
+    <string name="feature_matches_map_status_running">Running</string>
+
+    <string name="feature_matches_maps_title">Maps</string>
+
+    <!--    Feature: team detail-->
+    <string name="feature_team_detail_title">Team</string>
+    <string name="feature_team_recent_matches">Recent matches</string>
+
+    <!--    Feature: teams leaderboard-->
+    <string name="feature_teams_leaderboard_title">World Ranking</string>
+</resources>

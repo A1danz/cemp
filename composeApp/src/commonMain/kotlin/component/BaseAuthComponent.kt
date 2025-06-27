@@ -1,19 +1,29 @@
 package component
 
+import com.cemp.SharedRes
 import com.cemp.feature.auth.domain.model.error.InvalidField
+import dev.icerock.moko.resources.desc.StringDesc
+import dev.icerock.moko.resources.format
 
 interface BaseAuthComponent {
-    fun getUiTextForInvalidField(invalidField: InvalidField): String {
-        return when(invalidField) {
-//            is InvalidField.LengthRangeRule -> resourceManager.getString(R.string.field_interval_error, invalidField.range.first, invalidField.range.last)
-//            is InvalidField.MaskRule -> resourceManager.getString(R.string.field_mask_error, invalidField.rightFormat)
-//            is InvalidField.MaxLengthRule -> resourceManager.getString(R.string.field_max_length_error, invalidField.max)
-//            is InvalidField.MinLengthRule -> resourceManager.getString(R.string.field_min_length_error, invalidField.min)
+    fun getUiTextForInvalidField(invalidField: InvalidField): StringDesc {
+        return when (invalidField) {
+            is InvalidField.LengthRangeRule -> SharedRes.strings.feature_auth_range_len_error.format(
+                invalidField.range.first,
+                invalidField.range.last
+            )
 
-            is InvalidField.LengthRangeRule -> "Длина поля должна быть от ${invalidField.range.first} до ${invalidField.range.last}"
-            is InvalidField.MaskRule -> "Поле должно соответсвовать формату: ${invalidField.rightFormat}"
-            is InvalidField.MaxLengthRule -> "Максимальная длина поля - ${invalidField.max}"
-            is InvalidField.MinLengthRule -> "Минимальная длина поля - ${invalidField.min}"
+            is InvalidField.MaskRule -> SharedRes.strings.feature_auth_mask_error.format(
+                invalidField.rightFormat
+            )
+
+            is InvalidField.MaxLengthRule -> SharedRes.strings.feature_auth_max_len_error.format(
+                invalidField.max
+            )
+
+            is InvalidField.MinLengthRule -> SharedRes.strings.feature_auth_max_len_error.format(
+                invalidField.min
+            )
 
         }
     }

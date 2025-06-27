@@ -9,11 +9,14 @@ import com.cemp.feature.auth.domain.model.error.RegistrationError
 import com.cemp.feature.auth.domain.model.result.RegistrationResult
 import com.cemp.feature.auth.domain.usecase.RegistrationUseCase
 import component.RegisterComponent
+import dev.icerock.moko.resources.desc.StringDesc
+import dev.icerock.moko.resources.desc.desc
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import com.cemp.SharedRes.strings as stringsRes
 
 class DefaultRegisterComponent(
     componentContext: ComponentContext,
@@ -47,22 +50,28 @@ class DefaultRegisterComponent(
     }
 
     private fun onPasswordChanged(value: String) {
+        val pwdMatchingErr = getPasswordMatchingErrorOrNull(
+            value,
+            state.value.confirmPassword
+        )
+
         state.value = state.value.copy(
             password = value,
-            passwordError = getPasswordMatchingErrorOrNull(
-                state.value.password,
-                state.value.confirmPassword
-            ),
+            passwordError = pwdMatchingErr,
+            confirmPasswordError = pwdMatchingErr
         )
     }
 
     private fun onConfirmPasswordChanged(value: String) {
+        val pwdMatchingErr = getPasswordMatchingErrorOrNull(
+            state.value.password,
+            value
+        )
+
         state.value = state.value.copy(
             confirmPassword = value,
-            confirmPasswordError = getPasswordMatchingErrorOrNull(
-                state.value.password,
-                state.value.confirmPassword
-            ),
+            confirmPasswordError = pwdMatchingErr,
+            passwordError = pwdMatchingErr,
         )
     }
 
@@ -76,7 +85,7 @@ class DefaultRegisterComponent(
     private fun onUsernameChanged(value: String) {
         state.value = state.value.copy(
             username = value,
-            usernameError = "",
+            usernameError = null,
         )
     }
 
@@ -99,13 +108,19 @@ class DefaultRegisterComponent(
                 logErr("Error during login", it)
 
                 state.value =
-                    state.value.copy(isLoading = false, globalError = "Неизвестная ошибка")
+                    state.value.copy(
+                        isLoading = false,
+                        globalError = stringsRes.feature_auth_unknown_error.desc()
+                    )
             }
         }
     }
 
-    private fun getPasswordMatchingErrorOrNull(password: String, replayPassword: String): String? {
-        return "Пароли не совпадают".takeIf { password != replayPassword }
+    private fun getPasswordMatchingErrorOrNull(
+        password: String,
+        replayPassword: String
+    ): StringDesc? {
+        return stringsRes.feature_auth_pwds_not_equal.takeIf { password != replayPassword }?.desc()
     }
 
     private fun handleErrorResult(error: RegistrationError) {
@@ -123,12 +138,12 @@ class DefaultRegisterComponent(
             }
 
             RegistrationError.Unknown -> {
-                state.value.copy(globalError = "Неизвестная ошибка")
+                state.value.copy(globalError = stringsRes.feature_auth_unknown_error.desc())
             }
 
             RegistrationError.UserAlreadyExists -> {
-                state.value.copy(globalError = "Пользователь уже существует")
+                state.value.copy(globalError = stringsRes.feature_auth_user_already_exists.desc())
             }
-        }
+        }.copy(isLoading = false)
     }
 }

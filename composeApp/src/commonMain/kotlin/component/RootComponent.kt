@@ -8,5 +8,6 @@ interface RootComponent {
 
     sealed interface Child {
         data class Auth(val component: AuthComponent) : Child
+        data class Main(val component: MainComponent) : Child
     }
 }

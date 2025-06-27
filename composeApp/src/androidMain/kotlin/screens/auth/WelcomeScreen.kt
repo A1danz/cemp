@@ -1,48 +1,76 @@
 package screens.auth
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.cemp.SharedRes.strings
 import component.WelcomeComponent
+import dev.icerock.moko.resources.compose.stringResource
+import theme.AppTheme
+import theme.Theme
 import ui.component.CempButton
+import ui.component.CempText
+import com.cemp.SharedRes.strings as stringsRes
 
 @Composable
 fun WelcomeScreen(
     component: WelcomeComponent,
     modifier: Modifier = Modifier,
 ) {
+    WelcomeScreenContent(onIntent = { component.onIntent(it) }, modifier = modifier)
+}
+
+@Composable
+fun WelcomeScreenContent(
+    onIntent: (WelcomeComponent.Intent) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .background(Theme.colors.mainBackgroundColor)
+            .padding(16.dp),
     ) {
-        Text(
-            text = "Welcome to CEMP",
-            fontSize = TextUnit(24f, TextUnitType.Sp),
+        CempText(
+            text = stringResource(strings.feature_auth_welcome_title),
+            textStyle = Theme.typography.text28Bold,
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         CempButton(
-            onClick = { component.onIntent(WelcomeComponent.Intent.LoginClicked) },
-            text = "Sign In"
+            onClick = { onIntent(WelcomeComponent.Intent.LoginClicked) },
+            text = stringResource(strings.feature_auth_log_in_btn),
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         CempButton(
-            onClick = { component.onIntent(WelcomeComponent.Intent.RegisterClicked) },
-            text = "Sing Up"
+            onClick = { onIntent(WelcomeComponent.Intent.RegisterClicked) },
+            text = stringResource(stringsRes.feature_auth_register_btn),
+            isWhite = false,
+            modifier = Modifier.fillMaxWidth()
         )
     }
+}
 
+@Preview
+@Composable
+fun WelcomeScreenPreview() {
+    AppTheme(darkTheme = true) {
+        WelcomeScreenContent({ })
+    }
 }
