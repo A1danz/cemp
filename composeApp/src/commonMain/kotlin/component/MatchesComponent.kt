@@ -1,0 +1,4 @@
+package component
+
+interface MatchesComponent {
+}

@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserLocalRepository {
     suspend fun saveUser(user: User): Boolean
-    suspend fun getUser(): User?
+    fun getUser(): User?
     suspend fun clearUser()
     fun getUserFlow(): Flow<User?>
 }

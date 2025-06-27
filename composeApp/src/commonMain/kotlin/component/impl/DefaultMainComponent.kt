@@ -1,0 +1,48 @@
+package component.impl
+
+import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.stack.ChildStack
+import com.arkivanov.decompose.router.stack.StackNavigation
+import com.arkivanov.decompose.router.stack.bringToFront
+import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.value.Value
+import component.MainComponent
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import org.koin.core.component.KoinComponent
+
+class DefaultMainComponent(
+    componentContext: ComponentContext,
+) : MainComponent, ComponentContext by componentContext, KoinComponent {
+
+    private val navigation = StackNavigation<MainComponent.Tab>()
+    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+
+    override val childStack: Value<ChildStack<MainComponent.Tab, MainComponent.Child>> =
+        childStack(
+            source = navigation,
+            initialConfiguration = MainComponent.Tab.Matches,
+            handleBackButton = true,
+            childFactory = ::createChild,
+            serializer = MainComponent.Tab.serializer(),
+        )
+
+    private fun createChild(
+        tab: MainComponent.Tab,
+        context: ComponentContext
+    ): MainComponent.Child =
+        when (tab) {
+            MainComponent.Tab.Matches -> MainComponent.Child.Matches(DefaultMatchesComponent(context))
+            MainComponent.Tab.TeamsLeaderboard -> MainComponent.Child.TeamsLeaderboard(
+                DefaultTeamsLeaderboardComponent(context)
+            )
+        }
+
+    override fun onTabSelected(tab: MainComponent.Tab) {
+        val currentTab = childStack.value.active.configuration
+        if (currentTab != tab) {
+            navigation.bringToFront(tab)
+        }
+    }
+}

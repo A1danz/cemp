@@ -48,16 +48,14 @@ class UserLocalRepositoryImpl(
         }
     }
 
-    override suspend fun getUser(): User? {
-        return withContext(dispatcher) {
-            runCatching {
-                settings.getStringOrNull(USER_DATA)?.let { serialized ->
-                    userDataSerializer.deserialize(serialized).mapToDomain()
-                }
-            }.getOrElse {
-                logErr("Get user from settings exception", it)
-                null
+    override fun getUser(): User? {
+        return runCatching {
+            settings.getStringOrNull(USER_DATA)?.let { serialized ->
+                userDataSerializer.deserialize(serialized).mapToDomain()
             }
+        }.getOrElse {
+            logErr("Get user from settings exception", it)
+            null
         }
     }
 

@@ -1,21 +1,21 @@
 package component
 
 import com.arkivanov.decompose.value.Value
-import com.cemp.feature.auth.domain.model.error.InvalidField
+import dev.icerock.moko.resources.desc.StringDesc
 
 interface LoginComponent : BaseAuthComponent {
 
     val model: Value<Model>
 
-    fun onIntent(intent: Intent)
+    fun onIntent(loginIntent: Intent)
 
     data class Model(
         val isLoading: Boolean,
         val email: String,
-        val emailError: String?,
+        val emailError: StringDesc?,
         val password: String,
-        val passwordError: String?,
-        val globalError: String?,
+        val passwordError: StringDesc?,
+        val globalError: StringDesc?,
     ) {
         companion object {
             fun createInitialValue() = Model(

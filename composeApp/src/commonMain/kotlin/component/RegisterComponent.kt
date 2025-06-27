@@ -2,26 +2,27 @@ package component
 
 import com.arkivanov.decompose.value.Value
 import component.LoginComponent.Model
+import dev.icerock.moko.resources.desc.StringDesc
 
 interface RegisterComponent : BaseAuthComponent {
 
     val model: Value<Model>
 
-    fun onIntent(intent: Intent)
+    fun onIntent(registerIntent: Intent)
 
     data class Model(
         val isLoading: Boolean,
         val name: String,
-        val nameError: String?,
+        val nameError: StringDesc?,
         val username: String,
-        val usernameError: String?,
+        val usernameError: StringDesc?,
         val email: String,
-        val emailError: String?,
+        val emailError: StringDesc?,
         val password: String,
-        val passwordError: String?,
+        val passwordError: StringDesc?,
         val confirmPassword: String,
-        val confirmPasswordError: String?,
-        val globalError: String?,
+        val confirmPasswordError: StringDesc?,
+        val globalError: StringDesc?,
     ) {
         companion object {
             fun createInitialValue() = Model(

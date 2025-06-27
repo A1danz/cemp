@@ -6,9 +6,7 @@ import ComposeApp
 struct iOSApp: App {
     
     init() {
-       // Инициализация Koin при старте iOS
         SharedDIKt.doInitKoin()
-       // или если функция называется иначе — используйте HelperKt.doInitKoin()
    }
     
     @UIApplicationDelegateAdaptor(AppDelegate.self)

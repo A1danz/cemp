@@ -9,11 +9,13 @@ import com.cemp.feature.auth.domain.model.error.LoginError
 import com.cemp.feature.auth.domain.model.result.LoginResult
 import com.cemp.feature.auth.domain.usecase.LoginUseCase
 import component.LoginComponent
+import dev.icerock.moko.resources.desc.desc
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import com.cemp.SharedRes.strings as stringsRes
 
 class DefaultLoginComponent(
     componentContext: ComponentContext,
@@ -37,19 +39,14 @@ class DefaultLoginComponent(
     }
 
     private fun onEmailChanged(value: String) {
-        state.value = state.value.copy(email = value, emailError = "")
+        state.value = state.value.copy(email = value, emailError = null)
     }
 
     private fun onPasswordChanged(value: String) {
-        state.value = state.value.copy(password = value, passwordError = "")
+        state.value = state.value.copy(password = value, passwordError = null)
     }
 
     private fun onLoginClicked() {
-        if (state.value.email.isBlank() || state.value.password.isBlank()) {
-            state.value = state.value.copy(globalError = "Поля не должны быть пустыми")
-            return
-        }
-
         scope.launch {
             state.value = state.value.copy(isLoading = true)
 
@@ -60,13 +57,12 @@ class DefaultLoginComponent(
                     is LoginResult.Failed -> handleFailedResult(result.error)
                     LoginResult.Success -> onLoginSuccess()
                 }
-                onLoginSuccess()
             }.onFailure {
                 logErr("Error during login", it)
 
                 state.value = state.value.copy(
                     isLoading = false,
-                    globalError = "Произошла незивестная ошибка"
+                    globalError = stringsRes.feature_auth_unknown_error.desc()
                 )
             }
         }
@@ -75,7 +71,7 @@ class DefaultLoginComponent(
     private fun handleFailedResult(error: LoginError) {
         state.value = when (error) {
             LoginError.IncorrectPassword -> {
-                state.value.copy(globalError = "Неверный пароль")
+                state.value.copy(globalError = stringsRes.feature_auth_incorrect_pwd.desc())
             }
 
             is LoginError.InvalidData -> {
@@ -86,12 +82,12 @@ class DefaultLoginComponent(
             }
 
             LoginError.Unknown -> {
-                state.value.copy(globalError = "Неизвестная ошибка")
+                state.value.copy(globalError = stringsRes.feature_auth_unknown_error.desc())
             }
 
             LoginError.UserNotFound -> {
-               state.value.copy(globalError = "Пользователь не найден")
+                state.value.copy(globalError = stringsRes.feature_auth_user_not_found.desc())
             }
-        }
+        }.copy(isLoading = false)
     }
 }

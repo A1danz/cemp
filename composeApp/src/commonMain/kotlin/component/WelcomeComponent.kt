@@ -2,7 +2,7 @@ package component
 
 interface WelcomeComponent {
 
-    fun onIntent(intent: Intent)
+    fun onIntent(welcomeIntent: Intent)
 
     sealed interface Intent {
         data object LoginClicked : Intent
