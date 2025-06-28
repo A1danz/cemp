@@ -34,6 +34,8 @@ import model.MatchModel
 import theme.Theme
 import ui.component.CempMatchCard
 import ui.component.CempText
+import ui.component.ErrorBanner
+import ui.component.ProgressBarBanner
 import com.cemp.SharedRes.images as ImageRes
 import com.cemp.SharedRes.strings as StringRes
 
@@ -63,7 +65,7 @@ fun MatchesScreenContent(
             TopAppBar(
                 title = {
                     CempText(
-                        text = "Matches",
+                        text = stringResource(StringRes.feature_matches_title),
                         textStyle = Theme.typography.text28SemiBold,
                     )
                 },
@@ -71,7 +73,7 @@ fun MatchesScreenContent(
                     IconButton(onClick = { onIntent(MatchesComponent.Intent.OnLogoutClicked) }) {
                         Icon(
                             painter = painterResource(ImageRes.ic_logout),
-                            contentDescription = "Logout",
+                            contentDescription = stringResource(StringRes.common_roster), // todo: change to logout
                             tint = Theme.colors.textColor,
                             modifier = Modifier.size(20.dp)
                         )
@@ -87,29 +89,11 @@ fun MatchesScreenContent(
     ) { paddingValues ->
         when {
             model.isLoading -> {
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.fillMaxSize().background(Theme.colors.mainBackgroundColor)
-                ) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(48.dp),
-                        color = Theme.colors.blueTextColor,
-                    )
-                }
+                ProgressBarBanner()
             }
 
             model.isError -> {
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.fillMaxSize().background(Theme.colors.mainBackgroundColor)
-                ) {
-                    Text(
-                        text = stringResource(StringRes.feature_auth_unknown_error)
-                    )
-                }
-
+                ErrorBanner()
             }
 
             else -> {

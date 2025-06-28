@@ -56,10 +56,10 @@ class DefaultTeamsLeaderboardComponent(
                     )
                 }.copy(isLoading = false)
 
-                val data = (result as NetworkResponse.Success).data
-
-                delay(7000)
-                onTeamClicked(data.first().id)
+//                val data = (result as NetworkResponse.Success).data
+//
+//                delay(7000)
+//                onTeamClicked(data.first().id)
             }.onFailure {
                 _state.value = state.value.copy(isLoading = false, isError = true)
             }

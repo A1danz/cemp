@@ -2,6 +2,7 @@ package com.cemp.data.mapper
 
 import com.cemp.data.network.response.TeamInMatchResponse
 import com.cemp.data.network.response.TeamResponse
+import com.cemp.domain.model.Country
 import com.cemp.domain.model.Team
 import com.cemp.domain.model.TeamInMatch
 
@@ -18,6 +19,7 @@ fun TeamResponse.toTeam(): Team {
         id = id,
         name = name,
         imageUrl = imageUrl,
-        roster = players.map { it.toPlayer() }
+        roster = players.map { it.toPlayer() },
+        location = location?.let { Country.getByCountryCode(it) }
     )
 }

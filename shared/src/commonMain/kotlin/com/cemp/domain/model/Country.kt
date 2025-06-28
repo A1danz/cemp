@@ -191,7 +191,7 @@ enum class Country(val code: String, val fullName: String) {
     RE("RE", "Réunion"),
     RO("RO", "Romania"),
     RS("RS", "Serbia"),
-    RU("RU", "Russian Federation"),
+    RU("RU", "Russia"),
     RW("RW", "Rwanda"),
     SA("SA", "Saudi Arabia"),
     SB("SB", "Solomon Islands"),

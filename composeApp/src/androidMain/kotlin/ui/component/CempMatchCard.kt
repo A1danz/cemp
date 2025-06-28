@@ -2,6 +2,7 @@ package ui.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -54,6 +56,7 @@ fun CempMatchCard(
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = Theme.colors.secondaryBackgroundColor,
+
         ),
         shape = RoundedCornerShape(12.dp),
         border = BorderStroke(0.1.dp, Theme.colors.textColor),
@@ -95,7 +98,8 @@ fun CempMatchCard(
                     AsyncImage(
                         model = team1Image ?: ImageRes.ic_cs.drawableResId,
                         contentDescription = team1Name,
-                        modifier = Modifier.size(34.dp)
+                        modifier = Modifier.size(34.dp),
+                        colorFilter = ColorFilter.tint(Theme.colors.textColor).takeIf { team1Image == null }
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -130,7 +134,8 @@ fun CempMatchCard(
                         contentDescription = team2Name,
                         modifier = Modifier
                             .size(34.dp)
-                            .padding(start = 8.dp)
+                            .padding(start = 8.dp),
+                        colorFilter = ColorFilter.tint(Theme.colors.textColor).takeIf { team2Image == null }
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))

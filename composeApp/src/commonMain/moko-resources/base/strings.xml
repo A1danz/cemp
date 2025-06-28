@@ -1,6 +1,8 @@
 <resources>
     <!--    Common -->
     <string name="common_roster">Roster</string>
+    <string name="common_logout">Logout</string>
+    <string name="common_location_no_info">No info</string>
 
     <!--    Feature: main-->
     <string name="feature_main_matches_tab">Matches</string>
