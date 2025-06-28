@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cemp.SharedRes.strings
-import component.CempButton
+import ui.component.CempButton
 import component.WelcomeComponent
 import dev.icerock.moko.resources.compose.stringResource
 import theme.Theme

@@ -17,7 +17,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import component.CempButton
+import ui.component.CempButton
 import component.RegisterComponent
 import dev.icerock.moko.resources.compose.stringResource
 import theme.Theme
