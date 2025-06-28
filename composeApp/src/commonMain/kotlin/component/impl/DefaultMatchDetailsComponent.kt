@@ -20,6 +20,8 @@ import org.koin.core.component.inject
 class DefaultMatchDetailsComponent(
     componentContext: ComponentContext,
     private val match: MatchModel,
+    private val onTeamClicked: (Int) -> Unit,
+    private val onBack: () -> Unit,
 ) : MatchDetailsComponent, ComponentContext by componentContext, KoinComponent {
 
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
@@ -31,6 +33,13 @@ class DefaultMatchDetailsComponent(
 
     init {
         loadRosters()
+    }
+
+    override fun onIntent(intent: MatchDetailsComponent.Intent) {
+        when (intent) {
+            is MatchDetailsComponent.Intent.OnTeamClicked -> onTeamClicked(intent.teamId)
+            MatchDetailsComponent.Intent.BackClicked -> onBack()
+        }
     }
 
     private fun loadRosters() {

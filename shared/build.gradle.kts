@@ -60,7 +60,8 @@ kotlin {
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
             implementation(libs.sqlDelight.driver.native)
-            implementation(libs.firebaseAnalyticsKmp)
+            // Временно отключаем Firebase для тестирования
+            // implementation(libs.firebaseAnalyticsKmp)
         }
 
     }

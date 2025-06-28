@@ -7,6 +7,8 @@ import model.PlayerModel
 
 interface MatchDetailsComponent {
     val state: Value<Model>
+    
+    fun onIntent(intent: Intent)
 
     data class Model(
         val isLoading: Boolean,
@@ -26,5 +28,10 @@ interface MatchDetailsComponent {
                 )
             }
         }
+    }
+
+    sealed interface Intent {
+        data class OnTeamClicked(val teamId: Int) : Intent
+        data object BackClicked : Intent
     }
 }
