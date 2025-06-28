@@ -1,12 +1,9 @@
 package screens.matches
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -23,11 +20,6 @@ import component.MatchesComponent
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import theme.Theme
-import component.CempMatchCard
-import component.CempText
-import component.ErrorBanner
-import component.ProgressBarBanner
-import utils.StringResHelper
 import ui.component.CempText
 import ui.component.ErrorBanner
 import ui.component.MatchesList

@@ -1,4 +1,4 @@
-package component
+package ui.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
@@ -45,7 +44,7 @@ fun CempMatchCard(
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = Theme.colors.secondaryBackgroundColor,
-            ),
+        ),
         shape = RoundedCornerShape(12.dp),
         border = BorderStroke(0.1.dp, Theme.colors.textColor),
         onClick = onClick

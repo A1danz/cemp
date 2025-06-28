@@ -20,10 +20,10 @@ import component.TeamsLeaderboardComponent
 import dev.icerock.moko.resources.compose.stringResource
 import model.TeamModel
 import theme.Theme
-import component.CempTeamCard
-import component.CempText
-import component.ErrorBanner
-import component.ProgressBarBanner
+import ui.component.CempTeamCard
+import ui.component.CempText
+import ui.component.ErrorBanner
+import ui.component.ProgressBarBanner
 import utils.StringResHelper
 import com.cemp.SharedRes.strings as StringRes
 

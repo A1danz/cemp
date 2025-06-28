@@ -9,11 +9,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
 import model.PlayerModel
 import theme.Theme
+import utils.StringResHelper
 import com.cemp.SharedRes.strings as StringRes
 
 @Composable
@@ -49,7 +49,7 @@ fun PlayerRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         CempText(
-            text = player.fullName.toString(LocalContext.current),
+            text = player.fullName.let { StringResHelper.toString(it) },
             textStyle = Theme.typography.text14Medium,
             modifier = Modifier.weight(0.4f),
         )
