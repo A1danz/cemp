@@ -5,12 +5,14 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
 import component.MainComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import model.MatchModel
 import org.koin.core.component.KoinComponent
 
 class DefaultMainComponent(
@@ -56,12 +58,16 @@ class DefaultMainComponent(
                 DefaultMatchDetailsComponent(
                     componentContext = context,
                     match = tab.match,
+                    onTeamClicked = { navigation.push(MainComponent.Tab.TeamDetails(it)) },
+                    onBack = { navigation.pop() },
                 )
             )
             is MainComponent.Tab.TeamDetails -> MainComponent.Child.TeamDetails(
                 DefaultTeamDetailsComponent(
                     componentContext = context,
                     teamId = tab.teamId,
+                    onBack = { navigation.pop() },
+                    onMatchClicked = { match -> navigation.push(MainComponent.Tab.MatchDetails(match)) },
                 )
             )
         }

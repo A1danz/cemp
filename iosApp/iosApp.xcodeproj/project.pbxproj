@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00B1AC92BAF8A86ED0DE621E /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F53BA6E02E6017A2FF4A031 /* Pods_iosApp.framework */; };
+		2DF8207C2E0F2CBE002DE15B /* DesignTokens+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8207B2E0F2CBE002DE15B /* DesignTokens+SwiftUI.swift */; };
 		DDA513CA2E0E8A46000D7D6F /* ResourceExtesnsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA513C92E0E8A3F000D7D6F /* ResourceExtesnsion.swift */; };
 		DDCA8FE92E0C3F8C00438965 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */; };
 		DDCA8FEA2E0C3F8C00438965 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FE22E0C29B600438965 /* RegisterView.swift */; };
@@ -19,9 +20,13 @@
 		DDCA8FF02E0C3F8C00438965 /* MutableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD62E09E7C400438965 /* MutableValue.swift */; };
 		DDCA8FF12E0C3F8C00438965 /* RootHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FD12E09E2FC00438965 /* RootHolder.swift */; };
 		DDCA8FF22E0C3F8C00438965 /* iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A953A29CC810C00F8E227 /* iosApp.swift */; };
+		DDCA8FF32E0C3F8C00438965 /* MatchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FF42E0C3F8C00438965 /* MatchDetailView.swift */; };
+		DDCA8FF52E0C3F8C00438965 /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FF62E0C3F8C00438965 /* TeamDetailView.swift */; };
+		DDCA8FF72E0C3F8C00438965 /* WorldRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA8FF82E0C3F8C00438965 /* WorldRankingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DF8207B2E0F2CBE002DE15B /* DesignTokens+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignTokens+SwiftUI.swift"; sourceTree = "<group>"; };
 		2D2FF91F2E0EF02C002E9EC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F53BA6E02E6017A2FF4A031 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C05FEBCE9BE8078E61D65BD /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -38,6 +43,9 @@
 		DDCA8FE22E0C29B600438965 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		DDCA8FE42E0C2A3C00438965 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		DDCA8FE62E0C31E700438965 /* StateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateValue.swift; sourceTree = "<group>"; };
+		DDCA8FF42E0C3F8C00438965 /* MatchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailView.swift; sourceTree = "<group>"; };
+		DDCA8FF62E0C3F8C00438965 /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
+		DDCA8FF82E0C3F8C00438965 /* WorldRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldRankingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +96,13 @@
 				DDCA8FDE2E0C298300438965 /* LoginView.swift */,
 				DDCA8FDC2E09E81100438965 /* AuthView.swift */,
 				DDCA8FDA2E09E7FA00438965 /* RootView 2.swift */,
+				DDCA8FF42E0C3F8C00438965 /* MatchDetailView.swift */,
+				DDCA8FF62E0C3F8C00438965 /* TeamDetailView.swift */,
+				DDCA8FF82E0C3F8C00438965 /* WorldRankingView.swift */,
 				DDCA8FD52E09E7A600438965 /* DecomposeHelpers */,
 				DDCA8FD12E09E2FC00438965 /* RootHolder.swift */,
 				A93A953A29CC810C00F8E227 /* iosApp.swift */,
+				2DF8207B2E0F2CBE002DE15B /* DesignTokens+SwiftUI.swift */,
 				2D2FF91F2E0EF02C002E9EC1 /* GoogleService-Info.plist */,
 			);
 			path = iosApp;
@@ -242,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDCA8FE92E0C3F8C00438965 /* WelcomeView.swift in Sources */,
+				2DF8207C2E0F2CBE002DE15B /* DesignTokens+SwiftUI.swift in Sources */,
 				DDCA8FEA2E0C3F8C00438965 /* RegisterView.swift in Sources */,
 				DDCA8FEB2E0C3F8C00438965 /* LoginView.swift in Sources */,
 				DDCA8FEC2E0C3F8C00438965 /* AuthView.swift in Sources */,
@@ -251,6 +264,9 @@
 				DDCA8FF02E0C3F8C00438965 /* MutableValue.swift in Sources */,
 				DDCA8FF12E0C3F8C00438965 /* RootHolder.swift in Sources */,
 				DDCA8FF22E0C3F8C00438965 /* iosApp.swift in Sources */,
+				DDCA8FF32E0C3F8C00438965 /* MatchDetailView.swift in Sources */,
+				DDCA8FF52E0C3F8C00438965 /* TeamDetailView.swift in Sources */,
+				DDCA8FF72E0C3F8C00438965 /* WorldRankingView.swift in Sources */,
 				DDA513CA2E0E8A46000D7D6F /* ResourceExtesnsion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
