@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MatchModel(
+    val id: Int,
     val tournamentName: String,
     val status: StringDesc,
     val firstTeam: MatchTeamInfoModel,

@@ -1,4 +1,4 @@
-package screens.auth
+package screens.main
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -18,12 +18,15 @@ import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
-import com.cemp.common.ext.logErr
 import component.MainComponent
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import io.ktor.util.reflect.instanceOf
 import model.BottomBarItemsFactory
+import screens.leaderboard.TeamsLeaderboardScreen
+import screens.match.MatchDetailsScreen
+import screens.matches.MatchesScreen
+import screens.team.TeamDetailScreen
 import theme.Theme
 
 @Composable
@@ -49,7 +52,6 @@ fun MainScreenContent(
                 containerColor = Theme.colors.mainBackgroundColor,
             ) {
                 BottomBarItemsFactory.create().forEach {
-                    logErr(childStack.active.instance.toString())
                     NavigationBarItem(
                         selected = childStack.active.instance.instanceOf(it.childKClass),
                         onClick = { onTabSelected(it.tab) },
@@ -70,22 +72,6 @@ fun MainScreenContent(
                         )
                     )
                 }
-//                NavigationBarItem(
-//                    selected = childStack.active.instance is MainComponent.Child.Matches,
-//                    onClick = { onTabSelected(MainComponent.Tab.Matches) },
-//                    icon = { Icon(painterResource(SharedRes.images.ic_cs), contentDescription = stringResource(Strings.feature_matches_title)) },
-//                    label = { Text(stringResource(Strings.feature_matches_title)) },
-//                    modifier = Modifier.size(30.dp),
-//                    colors = NavigationBarItemDefaults.colors(
-//                        indicatorColor = Color.Transparent
-//                    )
-//                )
-//                NavigationBarItem(
-//                    selected = childStack.active.instance is MainComponent.Child.TeamsLeaderboard,
-//                    onClick = { onTabSelected(MainComponent.Tab.TeamsLeaderboard) },
-//                    icon = { Icon(painterResource(SharedRes.images.ic_leaderboard), contentDescription = stringResource(Strings.feature_teams_leaderboard_title)) },
-//                    label = { Text(stringResource(Strings.feature_teams_leaderboard_title)) }
-//                )
             }
         },
     ) { innerPadding ->
@@ -96,6 +82,8 @@ fun MainScreenContent(
             when (val instance = child.instance) {
                 is MainComponent.Child.Matches -> MatchesScreen(instance.component)
                 is MainComponent.Child.TeamsLeaderboard -> TeamsLeaderboardScreen(instance.component)
+                is MainComponent.Child.MatchDetails -> MatchDetailsScreen(instance.component)
+                is MainComponent.Child.TeamDetails -> TeamDetailScreen(instance.component)
             }
         }
     }

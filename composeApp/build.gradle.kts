@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.resources)
+    alias(libs.plugins.google.services)
 }
 
 kotlin {
@@ -65,6 +66,8 @@ kotlin {
             implementation(libs.decompose.ext)
             implementation(libs.koin.android)
             implementation(libs.coil.compose)
+            implementation(libs.coil)
+            implementation(libs.coil.okhttp)
         }
 
         jvmMain.dependencies {

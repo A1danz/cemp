@@ -1,11 +1,14 @@
 import Foundation
 import SwiftUI
 import ComposeApp
+import FirebaseCore
 
 @main
 struct iOSApp: App {
     
     init() {
+        // Инициализация Firebase
+        FirebaseApp.configure()
         SharedDIKt.doInitKoin()
    }
     

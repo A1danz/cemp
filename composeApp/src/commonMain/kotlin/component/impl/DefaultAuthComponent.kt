@@ -7,8 +7,10 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
+import com.cemp.analytics.Analytics
 import component.AuthComponent
 import kotlinx.serialization.Serializable
+import org.koin.core.component.KoinComponent
 
 class DefaultAuthComponent(
     componentContext: ComponentContext,
@@ -24,6 +26,18 @@ class DefaultAuthComponent(
         initialStack = { listOf(Config.Welcome) },
         serializer = Config.serializer(),
     )
+
+    init {
+        var lastActiveConfig: Config? = null
+        childStack.subscribe { childStack ->
+
+            val activeConfig = childStack.active.configuration
+            if (activeConfig != lastActiveConfig) {
+                Analytics.logScreenView(screenName = activeConfig.toString())
+                lastActiveConfig = activeConfig as Config
+            }
+        }
+    }
 
     private fun createChild(config: Config, ctx: ComponentContext): AuthComponent.Child = when (config) {
         Config.Welcome -> AuthComponent.Child.Welcome(

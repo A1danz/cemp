@@ -18,7 +18,10 @@ decompose = "3.3.0"
 essenty = "2.5.0"
 resources = "0.24.5"
 resources-graphics = "0.9.0"
-coil = "3.0.4"
+firebase-bom = "32.7.0"
+firebase-gitlive = "1.13.0"
+google-services = "4.4.0"
+coil = "3.2.0"
 
 [libraries]
 
@@ -59,6 +62,11 @@ resources-generator = { module = "dev.icerock.moko:resources-generator", version
 resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
 resources-graphics = { module = "dev.icerock.moko:graphics", version.ref = "resources-graphics" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+coil = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
+firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebaseAnalytics = { module = "com.google.firebase:firebase-analytics-ktx" }
+firebaseAnalyticsKmp = { module = "dev.gitlive:firebase-analytics", version.ref = "firebase-gitlive" }
 
 [plugins]
 
@@ -71,3 +79,4 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "resources" }
+google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
