@@ -11,8 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.stringResource
 import model.PlayerModel
 import theme.Theme
+import com.cemp.SharedRes.strings as StringRes
 
 @Composable
 fun TeamRoster(
@@ -57,7 +59,7 @@ fun PlayerRow(
             modifier = Modifier.weight(0.4f),
         )
         CempText(
-            text = player.nationality.toString(LocalContext.current),
+            text = player.nationality ?: stringResource(StringRes.common_no_info),
             textStyle = Theme.typography.text14Medium,
             modifier = Modifier.weight(0.2f),
             isBlue = true,

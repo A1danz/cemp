@@ -48,7 +48,7 @@ fun MatchDetailsScreen(
 
     MatchDetailsScreenContent(
         state = state,
-        onIntent = { },
+        onIntent = { component.onIntent(it) },
     )
 }
 
@@ -56,7 +56,7 @@ fun MatchDetailsScreen(
 @Composable
 fun MatchDetailsScreenContent(
     state: MatchDetailsComponent.Model,
-//    onIntent: (MatchDetailsComponent.Intent) -> Unit,
+    onIntent: (MatchDetailsComponent.Intent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -69,7 +69,7 @@ fun MatchDetailsScreenContent(
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { onIntent(MatchDetailsComponent.Intent.OnBackClicked) }) {
+                    IconButton(onClick = { onIntent(MatchDetailsComponent.Intent.BackClicked) }) {
                         Icon(
                             painter = painterResource(ImageRes.ic_left_arrow),
                             contentDescription = stringResource(StringRes.common_back),

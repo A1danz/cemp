@@ -42,6 +42,7 @@ fun TeamDetailScreen(
 
     TeamDetailsContent(
         state = state,
+        onIntent = { component.onIntent(it) },
     )
 }
 
@@ -49,6 +50,7 @@ fun TeamDetailScreen(
 @Composable
 fun TeamDetailsContent(
     state: TeamDetailsComponent.Model,
+    onIntent: (TeamDetailsComponent.Intent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -61,7 +63,7 @@ fun TeamDetailsContent(
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { onIntent(TeamDetailsComponent.Intent.BackClicked) }) {
                         Icon(
                             painter = painterResource(images.ic_left_arrow),
                             contentDescription = stringResource(StringRes.common_back),
@@ -109,6 +111,7 @@ fun TeamDetailsContent(
                         )
                         RecentMatchesBlock(
                             matches = state.recentMatches,
+                            onMatchClicked = { onIntent(TeamDetailsComponent.Intent.MatchClicked(it)) }
                         )
                     }
                 }
@@ -122,6 +125,7 @@ fun TeamDetailsContent(
 fun RecentMatchesBlock(
     matches: List<MatchModel>,
     modifier: Modifier = Modifier,
+    onMatchClicked: (MatchModel) -> Unit,
 ) {
 
     Column(

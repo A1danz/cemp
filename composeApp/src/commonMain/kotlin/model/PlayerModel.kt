@@ -7,6 +7,6 @@ data class PlayerModel(
     val name: String,
     val firstName: String?,
     val secondName: String?,
-    val fullName: StringDesc?,
+    val fullName: StringDesc,
     val nationality: String?,
 )

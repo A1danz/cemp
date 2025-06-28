@@ -12,8 +12,8 @@ import component.MainComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import model.MatchModel
 import org.koin.core.component.KoinComponent
+import utils.enableAnalytics
 
 class DefaultMainComponent(
     componentContext: ComponentContext,
@@ -21,12 +21,6 @@ class DefaultMainComponent(
 
     private val navigation = StackNavigation<MainComponent.Tab>()
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
-
-    init {
-        navigation.subscribe {
-            it.onComplete
-        }
-    }
 
     override val childStack: Value<ChildStack<MainComponent.Tab, MainComponent.Child>> =
         childStack(
@@ -36,6 +30,10 @@ class DefaultMainComponent(
             childFactory = ::createChild,
             serializer = MainComponent.Tab.serializer(),
         )
+
+    init {
+        childStack.enableAnalytics()
+    }
 
     private fun createChild(
         tab: MainComponent.Tab,
@@ -48,6 +46,7 @@ class DefaultMainComponent(
                     onMatchClick = { navigation.push(MainComponent.Tab.MatchDetails(it)) },
                 ),
             )
+
             MainComponent.Tab.TeamsLeaderboard -> MainComponent.Child.TeamsLeaderboard(
                 DefaultTeamsLeaderboardComponent(
                     componentContext = context,
@@ -62,6 +61,7 @@ class DefaultMainComponent(
                     onBack = { navigation.pop() },
                 )
             )
+
             is MainComponent.Tab.TeamDetails -> MainComponent.Child.TeamDetails(
                 DefaultTeamDetailsComponent(
                     componentContext = context,
