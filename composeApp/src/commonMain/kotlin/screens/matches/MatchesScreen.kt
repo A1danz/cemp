@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,13 +22,16 @@ import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import component.MatchesComponent
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
-import model.MatchModel
 import theme.Theme
 import component.CempMatchCard
 import component.CempText
 import component.ErrorBanner
 import component.ProgressBarBanner
 import utils.StringResHelper
+import ui.component.CempText
+import ui.component.ErrorBanner
+import ui.component.MatchesList
+import ui.component.ProgressBarBanner
 import com.cemp.SharedRes.images as ImageRes
 import com.cemp.SharedRes.strings as StringRes
 
@@ -67,7 +69,7 @@ fun MatchesScreenContent(
                     IconButton(onClick = { onIntent(MatchesComponent.Intent.OnLogoutClicked) }) {
                         Icon(
                             painter = painterResource(ImageRes.ic_logout),
-                            contentDescription = stringResource(StringRes.common_roster), // todo: change to logout
+                            contentDescription = stringResource(StringRes.common_logout),
                             tint = Theme.colors.textColor,
                             modifier = Modifier.size(20.dp)
                         )
@@ -79,7 +81,9 @@ fun MatchesScreenContent(
                 modifier = Modifier.background(Theme.colors.mainBackgroundColor)
             )
         },
-        modifier = modifier.fillMaxSize().background(Theme.colors.mainBackgroundColor)
+        modifier = modifier
+            .fillMaxSize()
+            .background(Theme.colors.mainBackgroundColor)
     ) { paddingValues ->
         when {
             model.isLoading -> {
@@ -95,40 +99,10 @@ fun MatchesScreenContent(
                     matches = model.matches,
                     modifier = Modifier
                         .fillMaxSize()
+                        .background(Theme.colors.mainBackgroundColor)
+                        .padding(horizontal = 16.dp)
                         .padding(paddingValues),
                     onMatchClicked = { onIntent(MatchesComponent.Intent.OnMatchClicked(it)) }
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun MatchesList(
-    matches: List<MatchModel>,
-    modifier: Modifier = Modifier,
-    onMatchClicked: (MatchModel) -> Unit,
-) {
-    LazyColumn(
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = modifier.background(Theme.colors.mainBackgroundColor)
-    ) {
-        items(
-            count = matches.size,
-            key = { matches[it].id }
-        ) { index ->
-            matches[index].run {
-                CempMatchCard(
-                    tournament = tournamentName,
-                    status = status.let { StringResHelper.toString(it) },
-                    team1Name = firstTeam.name,
-                    team1Image = firstTeam.imageUrl,
-                    team2Name = secondTeam.name,
-                    team2Image = secondTeam.imageUrl,
-                    matchTime = startDate,
-                    modifier = Modifier.fillMaxWidth(),
-                    onClick = { onMatchClicked(this) }
                 )
             }
         }

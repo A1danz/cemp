@@ -35,7 +35,7 @@ class TeamsRepositoryImpl(
     private suspend fun getTeams(requestLogic: HttpRequestBuilder.() -> Unit): NetworkResponse<List<Team>> {
         return withContext(dispatcher) {
             makeSafeApiCall<List<TeamResponse>> {
-                httpClient.get("/teams") {
+                httpClient.get("/csgo/teams") {
                     apply(requestLogic)
                 }
             }.map { response ->

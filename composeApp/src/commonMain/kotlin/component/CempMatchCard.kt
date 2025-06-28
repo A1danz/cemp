@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -36,7 +37,7 @@ fun CempMatchCard(
     team1Image: String?,
     team2Image: String?,
     matchTime: String?,
-    onClick: () -> Unit = {  },
+    onClick: () -> Unit = { },
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -44,8 +45,7 @@ fun CempMatchCard(
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = Theme.colors.secondaryBackgroundColor,
-
-        ),
+            ),
         shape = RoundedCornerShape(12.dp),
         border = BorderStroke(0.1.dp, Theme.colors.textColor),
         onClick = onClick
@@ -98,7 +98,6 @@ fun CempMatchCard(
                         colorFilter = ColorFilter.tint(Theme.colors.textColor)
                     )
 
-
                     Spacer(modifier = Modifier.width(8.dp))
 
                     CempText(
@@ -106,6 +105,7 @@ fun CempMatchCard(
                         textStyle = Theme.typography.text14Bold,
                         modifier = Modifier
                             .weight(1f)
+                            .wrapContentWidth(Alignment.CenterHorizontally)
                             .padding(end = 8.dp), // небольшой отступ от картинки
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
@@ -117,7 +117,6 @@ fun CempMatchCard(
                     text = "vs",
                     textStyle = Theme.typography.text14SemiBold,
                     modifier = Modifier.padding(horizontal = 20.dp),
-
                 )
 
                 // Правая команда
@@ -146,7 +145,9 @@ fun CempMatchCard(
                         text = team2Name,
                         textStyle = Theme.typography.text14Bold,
                         modifier = Modifier
-                            .weight(1f),
+                            .weight(1f)
+                            .wrapContentWidth(Alignment.CenterHorizontally)
+                            .padding(start = 8.dp),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )

@@ -2,7 +2,9 @@
     <!--    Common -->
     <string name="common_roster">Roster</string>
     <string name="common_logout">Logout</string>
-    <string name="common_location_no_info">No info</string>
+    <string name="common_no_info">No info</string>
+    <string name="common_location_info">No info</string>
+    <string name="common_back">Back</string>
 
     <!--    Feature: main-->
     <string name="feature_main_matches_tab">Matches</string>
@@ -33,6 +35,12 @@
 
     <!--    Feature: matches-->
     <string name="feature_matches_title">Matches</string>
+    <string name="feature_matches_loading">Loading matches...</string>
+    <string name="feature_matches_error_title">Unable to load matches</string>
+    <string name="feature_matches_error_message">Please check your connection and try again</string>
+    <string name="feature_matches_empty_title">No matches found</string>
+    <string name="feature_matches_empty_message">Check back later for upcoming matches</string>
+    <string name="feature_matches_vs">vs</string>
     <string name="feature_matches_match_status_cancelled">canceled</string>
     <string name="feature_matches_match_status_finished">finished</string>
     <string name="feature_matches_match_status_upcoming">upcoming</string>
@@ -55,6 +63,9 @@
 
     <!--    Feature: teams leaderboard-->
     <string name="feature_teams_leaderboard_title">World Ranking</string>
+
+    <!--    Feature: match details-->
+    <string name="feature_match_details_title">Match Details</string>
     <string name="feature_teams_leaderboard_loading">Loading ranking...</string>
     <string name="feature_teams_leaderboard_error_title">Loading Error</string>
     <string name="feature_teams_leaderboard_error_message">Failed to load team rankings</string>
