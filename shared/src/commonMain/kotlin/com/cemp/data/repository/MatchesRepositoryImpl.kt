@@ -35,7 +35,7 @@ class MatchesRepositoryImpl(
     private suspend fun getMatches(requestLogic: HttpRequestBuilder.() -> Unit): NetworkResponse<List<Match>> {
         return withContext(dispatcher) {
             makeSafeApiCall<List<MatchResponse>> {
-                httpClient.get("/matches") {
+                httpClient.get("/csgo/matches") {
                     apply(requestLogic)
                 }
             }.let { response ->

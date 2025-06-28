@@ -52,13 +52,13 @@ class AuthRepositoryImpl(
                 // insert user and then find it in db and save in session
                 userQueries.insertUser(name, username, email, cryptoManager.cryptPassword(password))
 
-                val lastInsertedId = userQueries.lastInsertedId().executeAsOneOrNull()
+                val lastInsertedId = userQueries.findByEmail(email).executeAsOneOrNull()
                     ?: return@withContext RegistrationResult.Failed(RegistrationError.Unknown)
                         .also {
                             logErr("Last inserted id is null, can't register user")
                         }
 
-                val user = userQueries.findById(id = lastInsertedId).executeAsOneOrNull()
+                val user = userQueries.findById(id = lastInsertedId.id).executeAsOneOrNull()
                     ?: return@withContext RegistrationResult.Failed(RegistrationError.Unknown)
                         .also {
                             logErr("User by lastInsertedId[$lastInsertedId] = null, can't register user")

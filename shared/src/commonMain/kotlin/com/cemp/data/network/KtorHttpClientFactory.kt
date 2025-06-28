@@ -38,7 +38,7 @@ fun createHttpClient(
         defaultRequest {
             url {
                 protocol = URLProtocol.HTTPS
-                host = BuildConfig.BASE_URL
+                host = "api.pandascore.co"
             }
 
             header("Authorization", "Bearer ${BuildConfig.API_TOKEN}")
