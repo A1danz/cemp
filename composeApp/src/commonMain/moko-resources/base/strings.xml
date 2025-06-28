@@ -2,7 +2,8 @@
     <!--    Common -->
     <string name="common_roster">Roster</string>
     <string name="common_logout">Logout</string>
-    <string name="common_location_no_info">No info</string>
+    <string name="common_no_info">No info</string>
+    <string name="common_back">Back</string>
 
     <!--    Feature: main-->
     <string name="feature_main_matches_tab">Matches</string>
@@ -52,4 +53,7 @@
 
     <!--    Feature: teams leaderboard-->
     <string name="feature_teams_leaderboard_title">World Ranking</string>
+
+    <!--    Feature: match details-->
+    <string name="feature_match_details_title">Match Details</string>
 </resources>
