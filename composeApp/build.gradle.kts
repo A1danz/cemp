@@ -79,6 +79,10 @@ kotlin {
         jvmMain.dependencies {
             implementation(libs.decompose.ext)
             implementation(compose.desktop.currentOs)
+            implementation(libs.kotlinx.coroutines.swing)
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.sqlDelight.driver.sqlite)
+            implementation(libs.coil.okhttp)
         }
     }
 }
@@ -105,12 +109,32 @@ multiplatformResources {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "sample.app.MainKt"
+        
+        jvmArgs += listOf(
+            "-Xmx2G",
+            "-Dfile.encoding=UTF-8",
+            "-Dapple.awt.application.appearance=system",
+            "-Dskiko.renderApi=SOFTWARE"
+        )
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "cemp"
             packageVersion = "1.0.0"
+            
+            macOS {
+                bundleID = "sample.app.cemp"
+                iconFile.set(project.file("src/jvmMain/resources/icon.icns"))
+            }
+            
+            windows {
+                iconFile.set(project.file("src/jvmMain/resources/icon.ico"))
+            }
+            
+            linux {
+                iconFile.set(project.file("src/jvmMain/resources/icon.png"))
+            }
         }
     }
 }
