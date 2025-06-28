@@ -13,20 +13,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import component.RegisterComponent
 import dev.icerock.moko.resources.compose.stringResource
 import theme.AppTheme
 import theme.Theme
-import ui.component.CempButton
-import ui.component.CempProgressBar
-import ui.component.CempText
-import ui.component.CempTextField
+import component.CempButton
+import component.CempProgressBar
+import component.CempText
+import component.CempTextField
+import utils.StringResHelper
 import com.cemp.SharedRes.strings as stringsRes
 
 @Composable
@@ -43,8 +42,6 @@ fun RegisterContent(
     state: RegisterComponent.Model,
     onIntent: (RegisterComponent.Intent) -> Unit
 ) {
-    val context = LocalContext.current
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -73,7 +70,7 @@ fun RegisterContent(
             CempTextField(
                 value = state.name,
                 label = stringResource(stringsRes.feature_auth_name_placeholder),
-                error = state.nameError?.toString(context),
+                error = state.nameError?.let { StringResHelper.toString(it) },
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.NameChanged(it)) }
             )
@@ -81,7 +78,7 @@ fun RegisterContent(
             CempTextField(
                 value = state.email,
                 label = stringResource(stringsRes.feature_auth_email_placeholder),
-                error = state.emailError?.toString(context),
+                error = state.emailError?.let { StringResHelper.toString(it) },
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.EmailChanged(it)) }
             )
@@ -89,7 +86,7 @@ fun RegisterContent(
             CempTextField(
                 value = state.username,
                 label = stringResource(stringsRes.feature_auth_username_placeholder),
-                error = state.usernameError?.toString(context),
+                error = state.usernameError?.let { StringResHelper.toString(it) },
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.UsernameChanged(it)) },
             )
@@ -97,7 +94,7 @@ fun RegisterContent(
             CempTextField(
                 value = state.password,
                 label = stringResource(stringsRes.feature_auth_password_placeholder),
-                error = state.passwordError?.toString(context),
+                error = state.passwordError?.let { StringResHelper.toString(it) },
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.PasswordChanged(it)) },
                 visualTransformation = PasswordVisualTransformation(),
@@ -107,7 +104,7 @@ fun RegisterContent(
             CempTextField(
                 value = state.confirmPassword,
                 label = stringResource(stringsRes.feature_auth_confirm_password_placeholder),
-                error = state.confirmPasswordError?.toString(context),
+                error = state.confirmPasswordError?.let { StringResHelper.toString(it) },
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = { onIntent(RegisterComponent.Intent.ConfirmPasswordChanged(it)) },
                 visualTransformation = PasswordVisualTransformation(),
@@ -129,26 +126,26 @@ fun RegisterContent(
 
 }
 
-@Preview(showBackground = true, name = "Register Screen Preview")
-@Composable
-fun RegisterContentPreview() {
-    val previewState = RegisterComponent.Model(
-        name = "",
-        email = "john.doe@example.com",
-        username = "johndoe",
-        password = "password123",
-        confirmPassword = "password123",
-        isLoading = false,
-        nameError = null,
-        emailError = null,
-        usernameError = null,
-        passwordError = null,
-        confirmPasswordError = null,
-        globalError = null,
-    )
-
-    AppTheme(true) {
-        RegisterContent(previewState) { }
-    }
-}
+//@Preview(showBackground = true, name = "Register Screen Preview")
+//@Composable
+//fun RegisterContentPreview() {
+//    val previewState = RegisterComponent.Model(
+//        name = "",
+//        email = "john.doe@example.com",
+//        username = "johndoe",
+//        password = "password123",
+//        confirmPassword = "password123",
+//        isLoading = false,
+//        nameError = null,
+//        emailError = null,
+//        usernameError = null,
+//        passwordError = null,
+//        confirmPasswordError = null,
+//        globalError = null,
+//    )
+//
+//    AppTheme(true) {
+//        RegisterContent(previewState) { }
+//    }
+//}
 

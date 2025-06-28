@@ -1,4 +1,4 @@
-package ui.component
+package component
 
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable

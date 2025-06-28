@@ -2,29 +2,22 @@ package screens.matches
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import component.MatchesComponent
@@ -32,10 +25,11 @@ import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import model.MatchModel
 import theme.Theme
-import ui.component.CempMatchCard
-import ui.component.CempText
-import ui.component.ErrorBanner
-import ui.component.ProgressBarBanner
+import component.CempMatchCard
+import component.CempText
+import component.ErrorBanner
+import component.ProgressBarBanner
+import utils.StringResHelper
 import com.cemp.SharedRes.images as ImageRes
 import com.cemp.SharedRes.strings as StringRes
 
@@ -127,7 +121,7 @@ private fun MatchesList(
             matches[index].run {
                 CempMatchCard(
                     tournament = tournamentName,
-                    status = status.toString(LocalContext.current),
+                    status = status.let { StringResHelper.toString(it) },
                     team1Name = firstTeam.name,
                     team1Image = firstTeam.imageUrl,
                     team2Name = secondTeam.name,

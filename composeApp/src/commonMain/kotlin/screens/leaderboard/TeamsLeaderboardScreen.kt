@@ -14,17 +14,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import component.TeamsLeaderboardComponent
 import dev.icerock.moko.resources.compose.stringResource
 import model.TeamModel
 import theme.Theme
-import ui.component.CempTeamCard
-import ui.component.CempText
-import ui.component.ErrorBanner
-import ui.component.ProgressBarBanner
+import component.CempTeamCard
+import component.CempText
+import component.ErrorBanner
+import component.ProgressBarBanner
+import utils.StringResHelper
 import com.cemp.SharedRes.strings as StringRes
 
 @Composable
@@ -109,7 +109,7 @@ fun TeamsList(
                     teamName = name,
                     teamImageUrl = imageUrl,
                     modifier = Modifier.fillMaxWidth(),
-                    location = location.toString(LocalContext.current),
+                    location = location.let { StringResHelper.toString(it) },
                     onClick = { onTeamClicked(this) },
                 )
             }

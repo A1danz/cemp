@@ -11,15 +11,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.cemp.SharedRes.strings
 import component.WelcomeComponent
 import dev.icerock.moko.resources.compose.stringResource
 import theme.AppTheme
 import theme.Theme
-import ui.component.CempButton
-import ui.component.CempText
+import component.CempButton
+import component.CempText
 import com.cemp.SharedRes.strings as stringsRes
 
 @Composable
@@ -67,10 +66,10 @@ fun WelcomeScreenContent(
     }
 }
 
-@Preview
-@Composable
-fun WelcomeScreenPreview() {
-    AppTheme(darkTheme = true) {
-        WelcomeScreenContent({ })
-    }
-}
+//@Preview
+//@Composable
+//fun WelcomeScreenPreview() {
+//    AppTheme(darkTheme = true) {
+//        WelcomeScreenContent({ })
+//    }
+//}

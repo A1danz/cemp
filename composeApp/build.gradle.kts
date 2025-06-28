@@ -15,7 +15,13 @@ kotlin {
     jvmToolchain(17)
 
     androidTarget()
-    jvm()
+
+    jvm() {
+        compilations.all {
+            kotlinOptions.jvmTarget = "17"
+        }
+    }
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -57,20 +63,21 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             api(libs.essenty)
             api(libs.decompose)
+            implementation(libs.decompose.ext)
             api(project(":shared"))
+            implementation(libs.coil.compose)
         }
 
         androidMain.dependencies {
-            implementation(compose.uiTooling)
             implementation(libs.androidx.activityCompose)
             implementation(libs.decompose.ext)
             implementation(libs.koin.android)
-            implementation(libs.coil.compose)
             implementation(libs.coil)
             implementation(libs.coil.okhttp)
         }
 
         jvmMain.dependencies {
+            implementation(libs.decompose.ext)
             implementation(compose.desktop.currentOs)
         }
     }
@@ -102,7 +109,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "sample"
+            packageName = "cemp"
             packageVersion = "1.0.0"
         }
     }

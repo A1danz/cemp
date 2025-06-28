@@ -1,10 +1,8 @@
-package ui.component
+package component
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,27 +13,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import com.cemp.common.ext.logErr
-import theme.AppTheme
+import dev.icerock.moko.resources.compose.painterResource
 import theme.Theme
 import com.cemp.SharedRes.images as ImageRes
 
@@ -95,12 +83,21 @@ fun CempMatchCard(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.weight(1f)
                 ) {
-                    AsyncImage(
-                        model = team1Image ?: ImageRes.ic_cs.drawableResId,
+                    val imageModifier = Modifier.size(34.dp)
+
+                    team1Image?.let {
+                        AsyncImage(
+                            model = it,
+                            contentDescription = team1Name,
+                            modifier = imageModifier,
+                        )
+                    } ?: Image(
+                        modifier = imageModifier,
+                        painter = painterResource(ImageRes.ic_cs),
                         contentDescription = team1Name,
-                        modifier = Modifier.size(34.dp),
-                        colorFilter = ColorFilter.tint(Theme.colors.textColor).takeIf { team1Image == null }
+                        colorFilter = ColorFilter.tint(Theme.colors.textColor)
                     )
+
 
                     Spacer(modifier = Modifier.width(8.dp))
 
@@ -129,13 +126,18 @@ fun CempMatchCard(
                     modifier = Modifier.weight(1f),
                     horizontalArrangement = Arrangement.End
                 ) {
-                    AsyncImage(
-                        model = team2Image ?: ImageRes.ic_cs.drawableResId,
+                    val imageModifier = Modifier.size(34.dp)
+
+                    team2Image?.let {
+                        AsyncImage(
+                            model = it,
+                            contentDescription = team1Name,
+                            modifier = imageModifier,
+                        )
+                    } ?: Image(
+                        painter = painterResource(ImageRes.ic_cs),
                         contentDescription = team2Name,
-                        modifier = Modifier
-                            .size(34.dp)
-                            .padding(start = 8.dp),
-                        colorFilter = ColorFilter.tint(Theme.colors.textColor).takeIf { team2Image == null }
+                        colorFilter = ColorFilter.tint(Theme.colors.textColor)
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))

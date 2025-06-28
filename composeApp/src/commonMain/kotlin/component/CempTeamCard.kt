@@ -1,5 +1,6 @@
-package ui.component
+package component
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -14,6 +15,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import dev.icerock.moko.resources.compose.painterResource
 import theme.Theme
 import com.cemp.SharedRes.images as ImageRes
 
@@ -43,14 +45,23 @@ fun CempTeamCard(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            AsyncImage(
-                model = teamImageUrl ?: ImageRes.ic_cs.drawableResId,
+            val imageModifier = Modifier
+                .size(34.dp)
+                .padding(end = 8.dp)
+
+            teamImageUrl?.let {
+                AsyncImage(
+                    model = it,
+                    contentDescription = teamName,
+                    modifier = imageModifier,
+                )
+            } ?: Image(
+                modifier = imageModifier,
+                painter = painterResource(ImageRes.ic_cs),
                 contentDescription = teamName,
-                modifier = Modifier
-                    .size(34.dp)
-                    .padding(end = 8.dp),
-                colorFilter = ColorFilter.tint(Theme.colors.textColor).takeIf { teamImageUrl == null }
+                colorFilter = ColorFilter.tint(Theme.colors.textColor),
             )
+
             CempText(
                 text = teamName,
                 textStyle = Theme.typography.text14Bold,
