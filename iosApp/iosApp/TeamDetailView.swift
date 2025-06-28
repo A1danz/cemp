@@ -228,91 +228,96 @@ struct TeamDetailView: View {
     
     // MARK: - Recent Match Card
     private func recentMatchCard(match: MatchModel) -> some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text(match.tournamentName)
-                    .font(theme.text14SemiBold)
-                    .foregroundColor(theme.textColor)
-                    .lineLimit(1)
-                
-                Spacer()
-                
-                Text(match.status.localized())
-                    .font(theme.text12Medium)
-                    .foregroundColor(theme.blueText)
-                    .lineLimit(1)
-            }
-            .padding(.horizontal, 16)
-            .padding(.top, 16)
-            
-            HStack(spacing: 24) {
-                VStack(spacing: 8) {
-                    AsyncImage(url: URL(string: match.firstTeam.imageUrl ?? "")) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } placeholder: {
-                        Circle()
-                            .fill(theme.secondaryBackground)
-                            .overlay(
-                                Text(String(match.firstTeam.name.prefix(1)))
-                                    .font(theme.text12SemiBold)
-                                    .foregroundColor(theme.textColor)
-                            )
-                    }
-                    .frame(width: 30, height: 30)
-                    .clipShape(Circle())
-                    
-                    Text(match.firstTeam.name)
-                        .font(theme.text12Medium)
+        Button(action: {
+            component.onIntent(intent_: TeamDetailsComponentIntentMatchClicked(match: match))
+        }) {
+            VStack(spacing: 0) {
+                HStack {
+                    Text(match.tournamentName)
+                        .font(theme.text14SemiBold)
                         .foregroundColor(theme.textColor)
                         .lineLimit(1)
-                }
-                .frame(maxWidth: .infinity)
-                
-                Text("\(match.firstTeam.score) - \(match.secondTeam.score)")
-                    .font(theme.text14SemiBold)
-                    .foregroundColor(theme.textColor)
-                    .lineLimit(1)
-                
-                VStack(spacing: 8) {
-                    AsyncImage(url: URL(string: match.secondTeam.imageUrl ?? "")) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } placeholder: {
-                        Circle()
-                            .fill(theme.secondaryBackground)
-                            .overlay(
-                                Text(String(match.secondTeam.name.prefix(1)))
-                                    .font(theme.text12SemiBold)
-                                    .foregroundColor(theme.textColor)
-                            )
-                    }
-                    .frame(width: 30, height: 30)
-                    .clipShape(Circle())
                     
-                    Text(match.secondTeam.name)
+                    Spacer()
+                    
+                    Text(match.status.localized())
                         .font(theme.text12Medium)
-                        .foregroundColor(theme.textColor)
+                        .foregroundColor(theme.blueText)
                         .lineLimit(1)
                 }
-                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 16)
+                .padding(.top, 16)
+                
+                HStack(spacing: 24) {
+                    VStack(spacing: 8) {
+                        AsyncImage(url: URL(string: match.firstTeam.imageUrl ?? "")) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } placeholder: {
+                            Circle()
+                                .fill(theme.secondaryBackground)
+                                .overlay(
+                                    Text(String(match.firstTeam.name.prefix(1)))
+                                        .font(theme.text12SemiBold)
+                                        .foregroundColor(theme.textColor)
+                                )
+                        }
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                        
+                        Text(match.firstTeam.name)
+                            .font(theme.text12Medium)
+                            .foregroundColor(theme.textColor)
+                            .lineLimit(1)
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    Text("\(match.firstTeam.score) - \(match.secondTeam.score)")
+                        .font(theme.text14SemiBold)
+                        .foregroundColor(theme.textColor)
+                        .lineLimit(1)
+                    
+                    VStack(spacing: 8) {
+                        AsyncImage(url: URL(string: match.secondTeam.imageUrl ?? "")) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } placeholder: {
+                            Circle()
+                                .fill(theme.secondaryBackground)
+                                .overlay(
+                                    Text(String(match.secondTeam.name.prefix(1)))
+                                        .font(theme.text12SemiBold)
+                                        .foregroundColor(theme.textColor)
+                                )
+                        }
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                        
+                        Text(match.secondTeam.name)
+                            .font(theme.text12Medium)
+                            .foregroundColor(theme.textColor)
+                            .lineLimit(1)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .padding(.horizontal, 24)
+                .padding(.vertical, 12)
+                
+                if let startDate = match.startDate {
+                    Text(startDate)
+                        .font(theme.text12Medium)
+                        .foregroundColor(theme.textColor.opacity(0.7))
+                        .lineLimit(1)
+                        .padding(.bottom, 16)
+                }
             }
-            .padding(.horizontal, 24)
-            .padding(.vertical, 12)
-            
-            if let startDate = match.startDate {
-                Text(startDate)
-                    .font(theme.text12Medium)
-                    .foregroundColor(theme.textColor.opacity(0.7))
-                    .lineLimit(1)
-                    .padding(.bottom, 16)
-            }
+            .frame(maxWidth: .infinity)
+            .background(theme.secondaryBackground)
+            .cornerRadius(12)
         }
-        .frame(maxWidth: .infinity)
-        .background(theme.secondaryBackground)
-        .cornerRadius(12)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

@@ -15,6 +15,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import mapper.toUi
+import model.MatchModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -22,6 +23,7 @@ class DefaultTeamDetailsComponent(
     componentContext: ComponentContext,
     val teamId: Int,
     private val onBack: () -> Unit,
+    private val onMatchClicked: (match: MatchModel) -> Unit,
 ) : TeamDetailsComponent, ComponentContext by componentContext, KoinComponent {
 
     private val _state = MutableValue(TeamDetailsComponent.Model.createInitialValue())
@@ -39,6 +41,7 @@ class DefaultTeamDetailsComponent(
     override fun onIntent(intent: TeamDetailsComponent.Intent) {
         when (intent) {
             TeamDetailsComponent.Intent.BackClicked -> onBack()
+            is TeamDetailsComponent.Intent.MatchClicked -> onMatchClicked(intent.match)
         }
     }
 

@@ -12,6 +12,7 @@ import component.MainComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import model.MatchModel
 import org.koin.core.component.KoinComponent
 
 class DefaultMainComponent(
@@ -66,6 +67,7 @@ class DefaultMainComponent(
                     componentContext = context,
                     teamId = tab.teamId,
                     onBack = { navigation.pop() },
+                    onMatchClicked = { match -> navigation.push(MainComponent.Tab.MatchDetails(match)) },
                 )
             )
         }

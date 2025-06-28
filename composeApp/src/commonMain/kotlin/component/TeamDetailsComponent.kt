@@ -30,5 +30,6 @@ interface TeamDetailsComponent {
 
     sealed interface Intent {
         data object BackClicked : Intent
+        data class MatchClicked(val match: MatchModel) : Intent
     }
 }

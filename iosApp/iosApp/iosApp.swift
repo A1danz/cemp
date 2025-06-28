@@ -7,7 +7,6 @@ import ComposeApp
 struct iOSApp: App {
     
     init() {
-        // Инициализация Firebase
 //        FirebaseApp.configure()
         SharedDIKt.doInitKoin()
    }
