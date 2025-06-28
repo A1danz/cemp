@@ -26,7 +26,7 @@ struct AuthView: View {
             case let login as AuthComponentChildLogin:
                 LoginView(component: login.component)
             case let registration as AuthComponentChildRegister:
-                RegisterView(component: registration.component)
+                RegistrationView(component: registration.component)
             default:
                 Text("Unknown screen")
             }

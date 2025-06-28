@@ -11,40 +11,60 @@ import Foundation
 
 struct WelcomeView: View {
     let component: WelcomeComponent
+    
+    @StateObject private var theme = CEMPTheme()
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        VStack(spacing: 20) {
-            Image(uiImage: ImageRes.ic_cs.toUIImage()!)
-                       .resizable()
-                       .frame(width: 28, height: 28)
+        ZStack {
+            theme.mainBackground
+                .ignoresSafeArea()
             
-            Text(StringRes.feature_auth_welcome_title.desc().localized())
-                .font(.title)
-                .padding()
+            VStack(spacing: 40) {
+                Spacer()
+                
+                // Welcome title
+                VStack(spacing: 20) {
 
-            Button(action: {
-                component.onIntent(welcomeIntent: WelcomeComponentIntentLoginClicked())
-            }) {
-                Text(StringRes.feature_auth_log_in_btn.desc().localized())
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
+                    Text("Welcome to Cemp")
+                        .font(.system(size: 28, weight: .bold))
+                        .foregroundColor(theme.textColor)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.vertical, 30)
 
-            Button(action: {
-                component.onIntent(welcomeIntent: WelcomeComponentIntentRegisterClicked())
-            }) {
-                Text(StringRes.feature_auth_register_btn.desc().localized())
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+                
+                VStack(spacing: 20) {
+                    // Log In button
+                    CustomButton(
+                        "Log In",
+                        style: .primary,
+                        isLoading: false
+                    ) {
+                        component.onIntent(welcomeIntent: WelcomeComponentIntentLoginClicked())
+                    }
+                    
+                    // Sign Up button
+                    CustomButton(
+                        "Sign Up",
+                        style: .secondary,
+                        isLoading: false
+                    ) {
+                        component.onIntent(welcomeIntent: WelcomeComponentIntentRegisterClicked())
+                    }
+                }
+                .padding(.horizontal, 40)
+                .padding(.bottom, 80)
+
+                Spacer()
             }
         }
-        .padding()
+        .onAppear {
+            theme.updateFromSystem(colorScheme)
+        }
+        .onChange(of: colorScheme) { newScheme in
+            theme.updateFromSystem(newScheme)
+        }
     }
 }
 
