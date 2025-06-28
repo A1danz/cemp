@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import model.MatchModel
 import theme.Theme
+import utils.StringResHelper
 
 @Composable
 fun MatchesList(
@@ -28,7 +28,7 @@ fun MatchesList(
             matches[index].run {
                 CempMatchCard(
                     tournament = tournamentName,
-                    status = status.toString(LocalContext.current),
+                    status = status.let { StringResHelper.toString(it) },
                     team1Name = firstTeam.name,
                     team1Image = firstTeam.imageUrl,
                     team2Name = secondTeam.name,

@@ -1,12 +1,12 @@
-package screens.leaderboard
+package screens.matches
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -14,48 +14,58 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import component.TeamsLeaderboardComponent
+import component.MatchesComponent
+import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
-import model.TeamModel
 import theme.Theme
-import ui.component.CempTeamCard
 import ui.component.CempText
 import ui.component.ErrorBanner
+import ui.component.MatchesList
 import ui.component.ProgressBarBanner
+import com.cemp.SharedRes.images as ImageRes
 import com.cemp.SharedRes.strings as StringRes
 
 @Composable
-fun TeamsLeaderboardScreen(
-    component: TeamsLeaderboardComponent,
-    modifier: Modifier = Modifier,
+fun MatchesScreen(
+    component: MatchesComponent,
+    modifier: Modifier = Modifier
 ) {
     val state by component.state.subscribeAsState()
 
-    TeamsLeaderboardContent(
-        state = state,
+    MatchesScreenContent(
+        model = state,
         onIntent = component::onIntent,
-        modifier = modifier
     )
+
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TeamsLeaderboardContent(
-    state: TeamsLeaderboardComponent.Model,
-    onIntent: (TeamsLeaderboardComponent.Intent) -> Unit,
-    modifier: Modifier = Modifier,
+fun MatchesScreenContent(
+    model: MatchesComponent.Model,
+    onIntent: (MatchesComponent.Intent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     CempText(
-                        text = stringResource(StringRes.feature_teams_leaderboard_title),
+                        text = stringResource(StringRes.feature_matches_title),
                         textStyle = Theme.typography.text28SemiBold,
                     )
+                },
+                actions = {
+                    IconButton(onClick = { onIntent(MatchesComponent.Intent.OnLogoutClicked) }) {
+                        Icon(
+                            painter = painterResource(ImageRes.ic_logout),
+                            contentDescription = stringResource(StringRes.common_logout),
+                            tint = Theme.colors.textColor,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent
@@ -68,49 +78,23 @@ fun TeamsLeaderboardContent(
             .background(Theme.colors.mainBackgroundColor)
     ) { paddingValues ->
         when {
-            state.isLoading -> {
+            model.isLoading -> {
                 ProgressBarBanner()
             }
 
-            state.isError -> {
+            model.isError -> {
                 ErrorBanner()
             }
 
             else -> {
-                TeamsList(
-                    teams = state.teams,
+                MatchesList(
+                    matches = model.matches,
                     modifier = Modifier
                         .fillMaxSize()
+                        .background(Theme.colors.mainBackgroundColor)
+                        .padding(horizontal = 16.dp)
                         .padding(paddingValues),
-                    onTeamClicked = { onIntent(TeamsLeaderboardComponent.Intent.OnTeamClicked(it.id)) }
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun TeamsList(
-    teams: List<TeamModel>,
-    onTeamClicked: (TeamModel) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    LazyColumn(
-        contentPadding = PaddingValues(16.dp),
-        modifier = modifier.background(Theme.colors.mainBackgroundColor)
-    ) {
-        items(
-            count = teams.size,
-            key = { teams[it].id },
-        ) { index ->
-            with(teams[index]) {
-                CempTeamCard(
-                    teamPosition = (index + 1).toString(),
-                    teamName = name,
-                    teamImageUrl = imageUrl,
-                    modifier = Modifier.fillMaxWidth(),
-                    location = location.toString(LocalContext.current),
-                    onClick = { onTeamClicked(this) },
+                    onMatchClicked = { onIntent(MatchesComponent.Intent.OnMatchClicked(it)) }
                 )
             }
         }

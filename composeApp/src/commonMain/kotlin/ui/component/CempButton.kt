@@ -8,10 +8,8 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import theme.AppTheme
 import theme.Theme
 
 @Composable
@@ -43,34 +41,34 @@ fun CempButton(
     }
 }
 
-@Preview()
-@Composable
-fun CempButtonPreview() {
-    AppTheme {
-        CempButton("Test text") { }
-    }
-}
-
-@Preview
-@Composable
-fun CempButtonWhitePreview() {
-    AppTheme {
-        CempButton("Test text", isWhite = false) { }
-    }
-}
-
-@Preview
-@Composable
-fun CempButtonPreviewDark() {
-    AppTheme(darkTheme = true) {
-        CempButton("Test text") { }
-    }
-}
-
-@Preview
-@Composable
-fun CempButtonWhitePreviewDark() {
-    AppTheme(darkTheme = true) {
-        CempButton("Test text", isWhite = false) { }
-    }
-}
+//@Preview()
+//@Composable
+//fun CempButtonPreview() {
+//    AppTheme {
+//        CempButton("Test text") { }
+//    }
+//}
+//
+//@Preview
+//@Composable
+//fun CempButtonWhitePreview() {
+//    AppTheme {
+//        CempButton("Test text", isWhite = false) { }
+//    }
+//}
+//
+//@Preview
+//@Composable
+//fun CempButtonPreviewDark() {
+//    AppTheme(darkTheme = true) {
+//        CempButton("Test text") { }
+//    }
+//}
+//
+//@Preview
+//@Composable
+//fun CempButtonWhitePreviewDark() {
+//    AppTheme(darkTheme = true) {
+//        CempButton("Test text", isWhite = false) { }
+//    }
+//}

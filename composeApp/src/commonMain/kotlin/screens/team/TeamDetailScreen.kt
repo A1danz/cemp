@@ -139,7 +139,7 @@ fun RecentMatchesBlock(
 
         MatchesList(
             matches = matches,
-        ) {}
+        ) { onMatchClicked(it) }
 
     }
 }

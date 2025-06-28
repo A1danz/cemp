@@ -1,6 +1,5 @@
 package screens.auth
 
-import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,20 +15,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
+import ui.component.CempButton
 import component.LoginComponent
 import dev.icerock.moko.resources.compose.stringResource
-import theme.AppTheme
 import theme.Theme
-import ui.component.CempButton
 import ui.component.CempProgressBar
 import ui.component.CempText
 import ui.component.CempTextField
+import utils.StringResHelper
 import com.cemp.SharedRes.strings as stringsRes
 
 @Composable
@@ -52,8 +49,6 @@ fun LoginContent(
     onIntent: (LoginComponent.Intent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val context: Context = LocalContext.current
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -77,7 +72,7 @@ fun LoginContent(
         CempTextField(
             value = state.email,
             label = stringResource(stringsRes.feature_auth_email_placeholder),
-            error = state.emailError?.toString(context),
+            error = state.emailError?.let { StringResHelper.toString(it) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp),
@@ -87,7 +82,7 @@ fun LoginContent(
         CempTextField(
             value = state.password,
             label = stringResource(stringsRes.feature_auth_password_placeholder),
-            error = state.passwordError?.toString(context),
+            error = state.passwordError?.let { StringResHelper.toString(it) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp),
@@ -99,7 +94,7 @@ fun LoginContent(
         state.globalError?.let { errorText ->
             Spacer(Modifier.height(8.dp))
             Text(
-                text = errorText.toString(context),
+                text = errorText.let { StringResHelper.toString(it) },
                 color = Color.Red
             )
         }
@@ -116,56 +111,56 @@ fun LoginContent(
     }
 }
 
-@Preview(showBackground = true, name = "Login Screen Preview")
-@Composable
-fun LoginContentPreview() {
-    val previewState = LoginComponent.Model(
-        email = "test@example.com",
-        password = "password123",
-        isLoading = false,
-        emailError = null,
-        passwordError = null,
-        globalError = null
-    )
+//@Preview(showBackground = true, name = "Login Screen Preview")
+//@Composable
+//fun LoginContentPreview() {
+//    val previewState = LoginComponent.Model(
+//        email = "test@example.com",
+//        password = "password123",
+//        isLoading = false,
+//        emailError = null,
+//        passwordError = null,
+//        globalError = null
+//    )
+//
+//    AppTheme {
+//        LoginContent(state = previewState, onIntent = {})
+//    }
+//
+//}
 
-    AppTheme {
-        LoginContent(state = previewState, onIntent = {})
-    }
-
-}
-
-@Preview(showBackground = true, name = "Login Screen Loading Preview")
-@Composable
-fun LoginContentLoadingPreview() {
-    val previewState = LoginComponent.Model(
-        email = "test@example.com",
-        password = "password123",
-        isLoading = true,
-        emailError = null,
-        passwordError = null,
-        globalError = null
-    )
-
-    AppTheme {
-        LoginContent(state = previewState, onIntent = {})
-
-    }
-
-}
-
-@Preview(showBackground = true, name = "Login Screen With Errors Preview")
-@Composable
-fun LoginContentWithErrorsPreview() {
-    val previewState = LoginComponent.Model(
-        email = "test@example",
-        password = "123",
-        isLoading = false,
-        emailError = null,
-        passwordError = null,
-        globalError = null,
-    )
-
-    AppTheme {
-        LoginContent(state = previewState, onIntent = {})
-    }
-}
+//@Preview(showBackground = true, name = "Login Screen Loading Preview")
+//@Composable
+//fun LoginContentLoadingPreview() {
+//    val previewState = LoginComponent.Model(
+//        email = "test@example.com",
+//        password = "password123",
+//        isLoading = true,
+//        emailError = null,
+//        passwordError = null,
+//        globalError = null
+//    )
+//
+//    AppTheme {
+//        LoginContent(state = previewState, onIntent = {})
+//
+//    }
+//
+//}
+//
+//@Preview(showBackground = true, name = "Login Screen With Errors Preview")
+//@Composable
+//fun LoginContentWithErrorsPreview() {
+//    val previewState = LoginComponent.Model(
+//        email = "test@example",
+//        password = "123",
+//        isLoading = false,
+//        emailError = null,
+//        passwordError = null,
+//        globalError = null,
+//    )
+//
+//    AppTheme {
+//        LoginContent(state = previewState, onIntent = {})
+//    }
+//}

@@ -1,6 +1,7 @@
 package ui.component
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import dev.icerock.moko.resources.compose.painterResource
 import theme.Theme
 import com.cemp.SharedRes.images as ImageRes
 
@@ -42,8 +44,7 @@ fun CempMatchCard(
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = Theme.colors.secondaryBackgroundColor,
-
-            ),
+        ),
         shape = RoundedCornerShape(12.dp),
         border = BorderStroke(0.1.dp, Theme.colors.textColor),
         onClick = onClick
@@ -81,12 +82,19 @@ fun CempMatchCard(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.weight(1f)
                 ) {
-                    AsyncImage(
-                        model = team1Image ?: ImageRes.ic_cs.drawableResId,
+                    val imageModifier = Modifier.size(34.dp)
+
+                    team1Image?.let {
+                        AsyncImage(
+                            model = it,
+                            contentDescription = team1Name,
+                            modifier = imageModifier,
+                        )
+                    } ?: Image(
+                        modifier = imageModifier,
+                        painter = painterResource(ImageRes.ic_cs),
                         contentDescription = team1Name,
-                        modifier = Modifier.size(34.dp),
                         colorFilter = ColorFilter.tint(Theme.colors.textColor)
-                            .takeIf { team1Image == null }
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -108,8 +116,7 @@ fun CempMatchCard(
                     text = "vs",
                     textStyle = Theme.typography.text14SemiBold,
                     modifier = Modifier.padding(horizontal = 20.dp),
-
-                    )
+                )
 
                 // Правая команда
                 Row(
@@ -117,14 +124,18 @@ fun CempMatchCard(
                     modifier = Modifier.weight(1f),
                     horizontalArrangement = Arrangement.End
                 ) {
-                    AsyncImage(
-                        model = team2Image ?: ImageRes.ic_cs.drawableResId,
+                    val imageModifier = Modifier.size(34.dp)
+
+                    team2Image?.let {
+                        AsyncImage(
+                            model = it,
+                            contentDescription = team1Name,
+                            modifier = imageModifier,
+                        )
+                    } ?: Image(
+                        painter = painterResource(ImageRes.ic_cs),
                         contentDescription = team2Name,
-                        modifier = Modifier
-                            .size(34.dp)
-                            .padding(start = 8.dp),
                         colorFilter = ColorFilter.tint(Theme.colors.textColor)
-                            .takeIf { team2Image == null }
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))

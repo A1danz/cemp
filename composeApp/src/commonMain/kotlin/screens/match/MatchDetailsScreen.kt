@@ -22,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
@@ -36,6 +35,7 @@ import ui.component.CempText
 import ui.component.ErrorBanner
 import ui.component.ProgressBarBanner
 import ui.component.TeamRosterBlock
+import utils.StringResHelper
 import com.cemp.SharedRes.images as ImageRes
 import com.cemp.SharedRes.strings as StringRes
 
@@ -142,9 +142,9 @@ fun MatchDetailsHeader(
         )
         CempText(
             text = if (match.startDate != null) {
-                "${match.startDate} - ${match.status.toString(LocalContext.current)}"
+                "${match.startDate} - ${match.status.let { StringResHelper.toString(it) }}"
             } else {
-                match.status.toString(LocalContext.current)
+                match.status.let { StringResHelper.toString(it) }
             },
             isBlue = true,
             textStyle = Theme.typography.text16SemiBold,
@@ -192,7 +192,7 @@ fun MatchTeam(
         modifier = modifier.clickable { onClick(team.id) },
     ) {
         AsyncImage(
-            model = team.imageUrl ?: ImageRes.ic_cs.drawableResId,
+            model = team.imageUrl ?: ImageRes.ic_cs,
             contentDescription = team.name,
             colorFilter = ColorFilter.tint(Theme.colors.textColor).takeIf { team.imageUrl == null },
             modifier = Modifier.size(64.dp)
