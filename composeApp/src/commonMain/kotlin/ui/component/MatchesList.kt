@@ -28,7 +28,7 @@ fun MatchesList(
             matches[index].run {
                 CempMatchCard(
                     tournament = tournamentName,
-                    status = status.let { StringResHelper.toString() },
+                    status = status.let { StringResHelper.toString(it) },
                     team1Name = firstTeam.name,
                     team1Image = firstTeam.imageUrl,
                     team2Name = secondTeam.name,
